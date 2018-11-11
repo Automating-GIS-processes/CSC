@@ -416,3 +416,9 @@ Next, we want to classify the travel times with 5 minute intervals until 200 min
       # Save the map
       save(p, outfp)
 
+
+In the end you should have following map.
+
+.. bokeh-plot:: C:/HY-DATA/HENTENKA/KOODIT/Opetus/Automating-GIS-processes/CSC18/source/codes/bokeh/interactive_map_from_shapefile.py
+   :source-position: none
+
