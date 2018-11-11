@@ -108,8 +108,8 @@ Contents
    :caption: Lesson 2
 
    lessons/L2/overview
-   lessons/L2/geopandas-basics
-   lessons/L2/projections
+   notebooks/L2/geopandas-basics.ipynb
+   notebooks/L2/projections.ipynb
    lessons/L2/using-functions
    lessons/L2/ex-2
 
@@ -118,7 +118,7 @@ Contents
    :caption: Lesson 3
 
    lessons/L3/overview
-   lessons/L3/geocoding
+   notebooks/L3/Geocoding_in_Geopandas.ipynb
    lessons/L3/retrieve-osm-data
    lessons/L3/reclassify
    lessons/L3/ex-3
