@@ -75,6 +75,7 @@ if errorlevel 9009 (
 
 
 if "%1" == "html" (
+    SET BOKEH_DOCS_MISSING_API_KEY_OK=yes
 	%SPHINXBUILD% -b html %ALLSPHINXOPTS% %BUILDDIR%
 	if errorlevel 1 exit /b 1
 	echo.
@@ -82,6 +83,7 @@ if "%1" == "html" (
 	goto end
 )
 if "%1" == "gh-pages" (
+    SET BOKEH_DOCS_MISSING_API_KEY_OK=yes
     SETLOCAL ENABLEDELAYEDEXPANSION
 
     :: Update remote refs
