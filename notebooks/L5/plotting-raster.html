@@ -19,7 +19,7 @@
     </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Visualizing raster layers &mdash; Intro to Python GIS 2018 documentation</title>
+  <title>Visualizing raster layers &mdash; Intro to Python GIS CSC documentation</title>
   
 
   
@@ -144,6 +144,9 @@
 <li class="toctree-l1"><a class="reference internal" href="reading-raster.html">Reading raster files with Rasterio</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Visualizing raster layers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Basic-plotting">Basic plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#RGB-True-color-composite">RGB True color composite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#False-color-composite">False color composite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Histogram-of-the-raster-data">Histogram of the raster data</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/L5/clipping-raster.html">Masking / clipping raster</a></li>
@@ -406,9 +409,9 @@ div.nboutput div.output_area.stderr {
 }
 </style>
 <div class="admonition note">
-This page was generated from <a class="reference external" href="https://github.com/Automating-GIS-processes/2018/blob/master/source/notebooks/L5/plotting-raster.ipynb">source/notebooks/L5/plotting-raster.ipynb</a>.
-<span class="raw-html"><br/><a href="https://mybinder.org/v2/gh/Automating-GIS-processes/2018/master?urlpath=lab/tree/source/notebooks/L5/plotting-raster.ipynb"><img alt="Binder badge" src="https://img.shields.io/badge/launch-full%20binder-red.svg" style="vertical-align:text-bottom"></a></span>
-<span class="raw-html"><a href="https://mybinder.org/v2/gh/Automating-GIS-processes/notebooks/master?urlpath=lab/tree/notebooks/L5/plotting-raster.ipynb"><img alt="Binder badge" src="https://img.shields.io/badge/launch-student%20binder-red.svg" style="vertical-align:text-bottom"></a></span>
+This page was generated from <a class="reference external" href="https://github.com/Automating-GIS-processes/CSC/blob/master/source/notebooks/L5/plotting-raster.ipynb">source/notebooks/L5/plotting-raster.ipynb</a>.
+<span class="raw-html"><br/><a href="https://mybinder.org/v2/gh/Automating-GIS-processes/CSC/master?urlpath=lab/tree/source/notebooks/L5/plotting-raster.ipynb"><img alt="Binder badge" src="https://img.shields.io/badge/launch-full%20binder-red.svg" style="vertical-align:text-bottom"></a></span>
+<span class="raw-html"><a href="https://mybinder.org/v2/gh/Automating-GIS-processes/notebooks-csc/master?urlpath=lab/tree/notebooks/L5/plotting-raster.ipynb"><img alt="Binder badge" src="https://img.shields.io/badge/launch-student%20binder-red.svg" style="vertical-align:text-bottom"></a></span>
 <span class="raw-html"><a href="https://notebooks.csc.fi/#/blueprint/d71cd2d26d924f48820dc22b67a87d8e"><img alt="CSC badge" src="https://img.shields.io/badge/launch-CSC%20notebook-blue.svg" style="vertical-align:text-bottom"></a></span></div>
 <div class="section" id="Visualizing-raster-layers">
 <h1>Visualizing raster layers<a class="headerlink" href="#Visualizing-raster-layers" title="Permalink to this headline">¶</a></h1>
@@ -430,12 +433,13 @@ and their corresponding wavelengths are:</p>
 <h2>Basic plotting<a class="headerlink" href="#Basic-plotting" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [26]:
+<span></span>In [43]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">rasterio</span>
 <span class="kn">from</span> <span class="nn">rasterio.plot</span> <span class="kn">import</span> <span class="n">show</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="c1"># Data dir</span>
@@ -461,11 +465,11 @@ and their corresponding wavelengths are:</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[26]:
+<span></span>Out[43]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1fed223cc18&gt;
+<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1fecded6be0&gt;
 </pre></div>
 </div>
 </div>
@@ -515,16 +519,177 @@ other:</p>
 <img alt="../../_images/notebooks_L5_plotting-raster_4_1.png" src="../../_images/notebooks_L5_plotting-raster_4_1.png" />
 </div>
 </div>
-<div class="nbinput nblast docutils container">
+</div>
+<div class="section" id="RGB-True-color-composite">
+<h2>RGB True color composite<a class="headerlink" href="#RGB-True-color-composite" title="Permalink to this headline">¶</a></h2>
+<p>Next let’s see how we can plot these channels as a normal RGB image.</p>
+<ul class="simple">
+<li>First we need to read the bands into numpy arrays and normalize the
+cell values into scale ranging from 0.0 to 1.0:</li>
+</ul>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [41]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<span></span><span class="c1"># Read the grid values into numpy arrays</span>
+<span class="n">red</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">green</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">blue</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Function to normalize the grid values</span>
+<span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Normalizes numpy arrays into scale 0.0 - 1.0&quot;&quot;&quot;</span>
+    <span class="n">array_min</span><span class="p">,</span> <span class="n">array_max</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">array</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">array</span> <span class="o">-</span> <span class="n">array_min</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">array_max</span> <span class="o">-</span> <span class="n">array_min</span><span class="p">))</span>
+
+<span class="c1"># Normalize the bands</span>
+<span class="n">redn</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">red</span><span class="p">)</span>
+<span class="n">greenn</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">green</span><span class="p">)</span>
+<span class="n">bluen</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">blue</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Normalized bands&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">redn</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">redn</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="s1">&#39;mean:&#39;</span><span class="p">,</span> <span class="n">redn</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">greenn</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">greenn</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="s1">&#39;mean:&#39;</span><span class="p">,</span> <span class="n">greenn</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">bluen</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">bluen</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="s1">&#39;mean:&#39;</span><span class="p">,</span> <span class="n">bluen</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Normalized band stats:
+0.0 - 1.0 mean: 0.1423301480606746
+0.0 - 1.0 mean: 0.16915069862129217
+0.0 - 1.0 mean: 0.23384832284425988
+</pre></div></div>
+</div>
+<p>As the statistics show, now the arrays have been normalized into scale
+from 0 to 1.</p>
+<ul class="simple">
+<li>Next we need to stack the values from different values together to
+produce the RGB true color composite. For this we can use Numpy’s
+<a class="reference external" href="https://docs.scipy.org/doc/numpy-1.15.1/reference/generated/numpy.dstack.html">dstack()</a>
+-function:</li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Create RGB natural color composite</span>
+<span class="n">rgb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">redn</span><span class="p">,</span> <span class="n">greenn</span><span class="p">,</span> <span class="n">bluen</span><span class="p">))</span>
+
+<span class="c1"># Let&#39;s see how our color composite looks like</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rgb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[51]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.image.AxesImage at 0x1fed2756400&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_L5_plotting-raster_8_1.png" src="../../_images/notebooks_L5_plotting-raster_8_1.png" />
+</div>
+</div>
+<p>Here we go, now we have a typical RGB natural color composite image that
+looks like a photograph taken with the satellite.</p>
+</div>
+<div class="section" id="False-color-composite">
+<h2>False color composite<a class="headerlink" href="#False-color-composite" title="Permalink to this headline">¶</a></h2>
+<p>Following the previous example, it is easy to create false color
+composites with different band configurations.</p>
+<ul class="simple">
+<li>One of the typical one, is to replace the blue band with near
+infra-red that can be used to detect vegetation easily where red
+color is emphasized. Let’s use the same raster file as input, and
+generate our first false color composite:</li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [52]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Read the grid values into numpy arrays</span>
+<span class="n">nir</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">red</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">green</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Normalize the values using the function that we defined earlier</span>
+<span class="n">nirn</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">nir</span><span class="p">)</span>
+<span class="n">redn</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">red</span><span class="p">)</span>
+<span class="n">greenn</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">green</span><span class="p">)</span>
+
+<span class="c1"># Create the composite by stacking</span>
+<span class="n">nrg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">nirn</span><span class="p">,</span> <span class="n">redn</span><span class="p">,</span> <span class="n">greenn</span><span class="p">))</span>
+
+<span class="c1"># Let&#39;s see how our color composite looks like</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">nrg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[52]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.image.AxesImage at 0x1fecfa4a390&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_L5_plotting-raster_11_1.png" src="../../_images/notebooks_L5_plotting-raster_11_1.png" />
+</div>
+</div>
+<p>As we can see, now the vegetation can be seen more easily from the image
+(red color).</p>
+</div>
+<div class="section" id="Histogram-of-the-raster-data">
+<h2>Histogram of the raster data<a class="headerlink" href="#Histogram-of-the-raster-data" title="Permalink to this headline">¶</a></h2>
+<p>Typically when working with raster data, you want to look at the
+histogram of different bands in your data. Luckily that is really easy
+to do with rasterio by using the <code class="docutils literal notranslate"><span class="pre">plot.show_hist()</span></code> function.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">rasterio.plot</span> <span class="kn">import</span> <span class="n">show_hist</span>
+
+<span class="n">show_hist</span><span class="p">(</span><span class="n">raster</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+      <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;stepfilled&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Histogram&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_L5_plotting-raster_14_0.png" src="../../_images/notebooks_L5_plotting-raster_14_0.png" />
+</div>
+</div>
+<p>Now we can easily see how the wavelengths of different bands are
+distributed.</p>
 </div>
 </div>
 
@@ -589,7 +754,7 @@ other:</p>
       <script type="text/javascript">
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../../',
-              VERSION:'2018',
+              VERSION:'CSC',
               LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
