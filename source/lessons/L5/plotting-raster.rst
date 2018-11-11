@@ -11,7 +11,11 @@ Basic plotting
     import rasterio
     from rasterio.plot import show
 
-    fp = r"C:\HY-DATA\HENTENKA\KOODIT\Opetus\Automating-GIS-processes\Data\Landsat\Helsinki_masked_p188r018_7t20020529_z34__LV-FIN.tif"
+    # Data dir
+    data_dir = r"C:\HY-DATA\HENTENKA\KOODIT\Opetus\Automating-GIS-processes\CSC18\data\L5"
+
+    # Filepath
+    fp = os.path.join(data_dir, "Helsinki_masked_p188r018_7t20020529_z34__LV-FIN.tif")
 
     # Open the file:
     raster = rasterio.open(fp)

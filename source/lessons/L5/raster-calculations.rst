@@ -18,8 +18,11 @@ is fairly straightforward if the extent etc. matches because the values of the r
 
 .. ipython:: python
 
+
+    # Data dir
+    data_dir = r"C:\HY-DATA\HENTENKA\KOODIT\Opetus\Automating-GIS-processes\CSC18\data\L5"
     # Filepath
-    fp = r"C:\HY-DATA\HENTENKA\CSC\Data\Helsinki_masked_p188r018_7t20020529_z34__LV-FIN.tif"
+    fp = os.path.join(data_dir, "Helsinki_masked_p188r018_7t20020529_z34__LV-FIN.tif")
     raster = rasterio.open(fp)
 
 For calculating the NDVI (Normalized difference vegetation index) you need two bands: band-4 which is the Red channel and band-5 which is the Near Infrared (NIR)

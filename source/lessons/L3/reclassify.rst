@@ -106,7 +106,7 @@ from different parts of the city (almost equal to Euclidian distance).
 
 .. ipython:: python
 
-   acc = acc.ix[acc['pt_r_tt'] >=0]
+   acc = acc.loc[acc['pt_r_tt'] >=0]
 
 Let's plot it and see how our data looks like.
 

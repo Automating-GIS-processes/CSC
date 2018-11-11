@@ -20,10 +20,11 @@ The following example shows how to clip a large raster based on a bounding box a
 
 .. ipython:: python
 
+    # Data dir
+    data_dir = r"C:\HY-DATA\HENTENKA\KOODIT\Opetus\Automating-GIS-processes\CSC18\data\L5"
     # Filepaths
-    fp = r"C:\HY-DATA\HENTENKA\CSC\Data\p188r018_7t20020529_z34__LV-FIN.tif"
-    out_tif = r"C:\HY-DATA\HENTENKA\CSC\Data\Helsinki_masked_p188r018_7t20020529_z34__LV-FIN.tif"
-
+    fp = os.path.join(data_dir, "p188r018_7t20020529_z34__LV-FIN.tif")
+    out_tif = os.path.join(data_dir, "Helsinki_Masked_p188r018_7t20020529_z34__LV-FIN.tif"
 
 - Open the raster in read mode
 

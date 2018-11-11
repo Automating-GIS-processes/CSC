@@ -26,8 +26,8 @@ in based on search criteria.
 .. ipython:: python
 
     # File and folder paths
-    dirpath = r"C:\HY-DATA\HENTENKA\KOODIT\Opetus\Automating-GIS-processes\Data\CSC_Lesson6"
-    out_fp = r"C:\HY-DATA\HENTENKA\KOODIT\Opetus\Automating-GIS-processes\Data\CSC_Lesson6\Helsinki_DEM_2x2m_Mosaic.tif"
+    dirpath = r"C:\HY-DATA\HENTENKA\KOODIT\Opetus\Automating-GIS-processes\CSC18\data\L5"
+    out_fp = os.path.join(dirpath, "Helsinki_DEM_2x2m_Mosaic.tif"
 
     # Make a search criteria to select the DEM files
     search_criteria = "L*.tif"
