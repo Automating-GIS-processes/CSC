@@ -51,21 +51,18 @@ The materials are divided into following themes:
 +----------------+---------------------------------+
 |   *Tue 12-13*  |          *Lunch*                |
 +----------------+---------------------------------+
-| Tue 13-13:15   |  Running Python scripts on      |
-|                |  CSC's Taito supercluster       |
-+----------------+---------------------------------+
 | **Lesson 4**   | Geometric operations;           |
-|  Tue 13:15-16  | Spatial queries;                |
+|  Tue 13:00-16  | Spatial queries;                |
 |                |                                 |
 +----------------+---------------------------------+
-| **Lesson 5**   | Visualization, making static    |
-|  Wed 9-12      | and interactive maps            |
-|                |                                 |
+| **Lesson 5**   | Raster processing in Python     |
+|  Wed 9-12      |                                 |
 +----------------+---------------------------------+
 |   *Wed 12-13*  |          *Lunch*                |
 +----------------+---------------------------------+
-| **Lesson 6**   | Raster processing in Python     |
-|  Wed 13-16     |                                 |
+| **Lesson 6**   | Visualization, making static    |
+|  Wed 13-16     | and interactive maps            |
+|                |                                 |
 +----------------+---------------------------------+
 
 .. admonition:: Materials are available for you online, always!
@@ -145,27 +142,25 @@ Contents
    :caption: Lesson 5
 
    lessons/L5/overview
-   lessons/L5/static-maps
-   lessons/L5/interactive-map-bokeh
-   lessons/L5/advanced-bokeh
-   lessons/L5/share-on-github
-   lessons/L5/ex-5
-   lessons/L5/exercise-5-hints
-
+   lessons/L5/download-data
+   lessons/L5/reading-raster
+   lessons/L5/plotting-raster
+   lessons/L5/clipping-raster
+   lessons/L5/raster-calculations
+   lessons/L5/raster-mosaic
+   lessons/L5/zonal-statistics
 
 .. toctree::
    :maxdepth: 2
    :caption: Lesson 6
 
    lessons/L6/overview
-   lessons/L6/download-data
-   lessons/L6/reading-raster
-   lessons/L6/plotting-raster
-   lessons/L6/clipping-raster
-   lessons/L6/raster-calculations
-   lessons/L6/raster-mosaic
-   lessons/L6/zonal-statistics
-
+   lessons/L6/static-maps
+   lessons/L6/interactive-map-bokeh
+   lessons/L6/advanced-bokeh
+   lessons/L6/share-on-github
+   lessons/L6/ex-6
+   lessons/L6/exercise-6-hints
 
 
 
