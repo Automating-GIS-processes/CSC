@@ -100,9 +100,8 @@ Contents
 
    lessons/L1/Intro-Python-GIS
    lessons/L1/overview
-   lessons/L1/Geometric-Objects
+   notebooks/L1/geometric-objects.ipynb
    lessons/L1/ex-1
-   lessons/L1/exercise-1-hints
 
 .. toctree::
    :maxdepth: 2
@@ -113,7 +112,6 @@ Contents
    lessons/L2/projections
    lessons/L2/using-functions
    lessons/L2/ex-2
-   lessons/L2/exercise-2-hints
 
 .. toctree::
    :maxdepth: 2
