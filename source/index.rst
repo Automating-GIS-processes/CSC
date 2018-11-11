@@ -160,7 +160,6 @@ Contents
    lessons/L6/advanced-bokeh
    lessons/L6/share-on-github
    lessons/L6/ex-6
-   lessons/L6/exercise-6-hints
 
 
 
