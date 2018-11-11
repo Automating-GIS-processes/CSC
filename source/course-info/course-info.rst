@@ -4,10 +4,9 @@ General info
 Schedule
 --------
 
-- Teaching from Monday to Wednesday at 9:00-16:00 at Dogmi training room (1st floor), CSC Finland, Keilaranta 14, Espoo (15.1 - 18.1.2018)
+- Teaching from Monday to Wednesday at 9:00-16:00 at Dogmi training room (1st floor), CSC Finland, Keilaranta 14, Espoo (12.11 - 15.11.2018)
 - Lunch at 12:15
 - Coffee breaks at 10:30 and 14:30
-
 
 Instructor
 ----------
