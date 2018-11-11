@@ -359,11 +359,11 @@
    ]
   },
   {
-   "cell_type": "code",
-   "execution_count": null,
+   "cell_type": "markdown",
    "metadata": {},
-   "outputs": [],
-   "source": []
+   "source": [
+    "Great, it worked! This is how you can easily clip (*mask*) raster files with rasterio."
+   ]
   }
  ],
  "metadata": {

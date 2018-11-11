@@ -249,13 +249,13 @@ yet, you can do that by running the script from <a class="reference internal" hr
 </ul>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">rasterio</span>
 
-<span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">rasterio.merge</span> <span class="kn">import</span> <span class="n">merge</span>
+<span class="gp">In [2]: </span><span class="kn">from</span> <span class="nn">rasterio.merge</span> <span class="kn">import</span> <span class="n">merge</span>
 
-<span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">rasterio.plot</span> <span class="kn">import</span> <span class="n">show</span>
+<span class="gp">In [3]: </span><span class="kn">from</span> <span class="nn">rasterio.plot</span> <span class="kn">import</span> <span class="n">show</span>
 
-<span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">glob</span>
+<span class="gp">In [4]: </span><span class="kn">import</span> <span class="nn">glob</span>
 
-<span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">In [5]: </span><span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
 </div>
 <p>As there are many <code class="docutils literal notranslate"><span class="pre">tif</span></code> files in our folder, it is not really pracical to start listing them manually. Luckily,
@@ -265,9 +265,9 @@ in based on search criteria.</p>
 <li>Find all <code class="docutils literal notranslate"><span class="pre">tif</span></code> files from the folder where the file starts with <code class="docutils literal notranslate"><span class="pre">L</span></code> -letter.</li>
 </ul>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go"># File and folder paths</span>
-<span class="gp">In [1]: </span><span class="n">dirpath</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\HY-DATA\HENTENKA\KOODIT\Opetus\Automating-GIS-processes\CSC18\data\L5&quot;</span>
+<span class="gp">In [6]: </span><span class="n">dirpath</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\HY-DATA\HENTENKA\KOODIT\Opetus\Automating-GIS-processes\CSC18\data\L5&quot;</span>
 
-<span class="gp">In [1]: </span><span class="n">out_fp</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirpath</span><span class="p">,</span> <span class="s2">&quot;Helsinki_DEM_2x2m_Mosaic.tif&quot;</span>
+<span class="gp">In [7]: </span><span class="n">out_fp</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirpath</span><span class="p">,</span> <span class="s2">&quot;Helsinki_DEM_2x2m_Mosaic.tif&quot;</span>
 
 <span class="go"># Make a search criteria to select the DEM files</span>
 </pre></div>
@@ -276,27 +276,27 @@ in based on search criteria.</p>
 <ul class="simple">
 <li>List all dem files with glob() function</li>
 </ul>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">dem_fps</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">dem_fps</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 
-<span class="gp">In [1]: </span><span class="n">dem_fps</span>
+<span class="gp">In [7]: </span><span class="n">dem_fps</span>
 </pre></div>
 </div>
 <p>Great! Now we have all those 12 files in a list and we can start to make a mosaic out of them.</p>
 <ul class="simple">
 <li>Let’s first create an empty list for the datafiles that will be part of the mosaic.</li>
 </ul>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">src_files_to_mosaic</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">src_files_to_mosaic</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li>Now we open all those files in read mode with raterio and add those files into a our source file list.</li>
 </ul>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="k">for</span> <span class="n">fp</span> <span class="ow">in</span> <span class="n">dem_fps</span><span class="p">:</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="k">for</span> <span class="n">fp</span> <span class="ow">in</span> <span class="n">dem_fps</span><span class="p">:</span>
 <span class="gp">   ...: </span>    <span class="n">src</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
 <span class="gp">   ...: </span>    <span class="n">src_files_to_mosaic</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
 <span class="gp">   ...: </span>
 
-<span class="gp">In [1]: </span><span class="n">src_files_to_mosaic</span>
+<span class="gp">In [7]: </span><span class="n">src_files_to_mosaic</span>
 </pre></div>
 </div>
 <p>Okey, now we can see that we have a list full of open raster objects.</p>
@@ -304,13 +304,13 @@ in based on search criteria.</p>
 <li>Now it is really easy to merge those together and create a mosaic with rasterio’s <code class="docutils literal notranslate"><span class="pre">merge</span></code> function.</li>
 </ul>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go"># Merge function returns a single mosaic array and the transformation info</span>
-<span class="gp">In [1]: </span><span class="n">mosaic</span><span class="p">,</span> <span class="n">out_trans</span> <span class="o">=</span> <span class="n">merge</span><span class="p">(</span><span class="n">src_files_to_mosaic</span><span class="p">)</span>
+<span class="gp">In [7]: </span><span class="n">mosaic</span><span class="p">,</span> <span class="n">out_trans</span> <span class="o">=</span> <span class="n">merge</span><span class="p">(</span><span class="n">src_files_to_mosaic</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li>Let’s check that it looks okey.</li>
 </ul>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">show</span><span class="p">(</span><span class="n">mosaic</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;terrain&#39;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">show</span><span class="p">(</span><span class="n">mosaic</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;terrain&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="savefig/raster_mosaic.png"><img alt="savefig/raster_mosaic.png" src="savefig/raster_mosaic.png" style="width: 400px;" /></a>
@@ -319,10 +319,10 @@ in based on search criteria.</p>
 <li>Let’s first update the metadata with our new dimensions, transform and CRS</li>
 </ul>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go"># Copy the metadata</span>
-<span class="gp">In [1]: </span><span class="n">out_meta</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">In [7]: </span><span class="n">out_meta</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
 <span class="go"># Update the metadata</span>
-<span class="gp">In [1]: </span><span class="n">out_meta</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;driver&quot;</span><span class="p">:</span> <span class="s2">&quot;GTiff&quot;</span><span class="p">,</span>
+<span class="gp">In [7]: </span><span class="n">out_meta</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;driver&quot;</span><span class="p">:</span> <span class="s2">&quot;GTiff&quot;</span><span class="p">,</span>
 <span class="gp">   ...: </span>                 <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="n">mosaic</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
 <span class="gp">   ...: </span>                 <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="n">mosaic</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
 <span class="gp">   ...: </span>                 <span class="s2">&quot;transform&quot;</span><span class="p">:</span> <span class="n">out_trans</span><span class="p">,</span>
@@ -336,7 +336,7 @@ in based on search criteria.</p>
 <li>Finally we can write our mosaic to our computer</li>
 </ul>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go"># Write the mosaic raster to disk</span>
-<span class="gp">In [1]: </span><span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">out_fp</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">out_meta</span><span class="p">)</span> <span class="k">as</span> <span class="n">dest</span><span class="p">:</span>
+<span class="gp">In [7]: </span><span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">out_fp</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">out_meta</span><span class="p">)</span> <span class="k">as</span> <span class="n">dest</span><span class="p">:</span>
 <span class="gp">   ...: </span>    <span class="n">dest</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">mosaic</span><span class="p">)</span>
 <span class="gp">   ...: </span>
 </pre></div>

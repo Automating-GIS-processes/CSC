@@ -249,50 +249,137 @@ is fairly straightforward if the extent etc. matches because the values of the r
 </ul>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">rasterio</span>
 
-<span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">rasterio.plot</span> <span class="kn">import</span> <span class="n">show</span>
+<span class="gp">In [3]: </span><span class="kn">from</span> <span class="nn">rasterio.plot</span> <span class="kn">import</span> <span class="n">show</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li>Let’s read the file that we masked for Helsinki Region</li>
 </ul>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go"># Data dir</span>
-<span class="gp">In [1]: </span><span class="n">data_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\HY-DATA\HENTENKA\KOODIT\Opetus\Automating-GIS-processes\CSC18\data\L5&quot;</span>
+<span class="gp">In [4]: </span><span class="n">data_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\HY-DATA\HENTENKA\KOODIT\Opetus\Automating-GIS-processes\CSC18\data\L5&quot;</span>
 
 <span class="go"># Filepath</span>
-<span class="gp">In [1]: </span><span class="n">fp</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">&quot;Helsinki_masked_p188r018_7t20020529_z34__LV-FIN.tif&quot;</span><span class="p">)</span>
+<span class="gp">In [5]: </span><span class="n">fp</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">&quot;Helsinki_masked_p188r018_7t20020529_z34__LV-FIN.tif&quot;</span><span class="p">)</span>
 
-<span class="gp">In [1]: </span><span class="n">raster</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+<span class="gp">In [6]: </span><span class="n">raster</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">CPLE_OpenFailedError</span><span class="g g-Whitespace">                      </span>Traceback (most recent call last)
+<span class="nn">rasterio/_base.pyx</span> in <span class="ni">rasterio._base.DatasetBase.__init__</span><span class="nt">()</span>
+
+<span class="nn">rasterio/_shim.pyx</span> in <span class="ni">rasterio._shim.open_dataset</span><span class="nt">()</span>
+
+<span class="nn">rasterio/_err.pyx</span> in <span class="ni">rasterio._err.exc_wrap_pointer</span><span class="nt">()</span>
+
+<span class="ne">CPLE_OpenFailedError</span>: C:\HY-DATA\HENTENKA\KOODIT\Opetus\Automating-GIS-processes\CSC18\data\L5/Helsinki_masked_p188r018_7t20020529_z34__LV-FIN.tif: No such file or directory
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">RasterioIOError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-6-b98bfa0a8723&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">raster</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+
+<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/rasterio/env.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">400</span> 
+<span class="g g-Whitespace">    </span><span class="mi">401</span>         <span class="k">with</span> <span class="n">env_ctor</span><span class="p">(</span><span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">402</span>             <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">403</span> 
+<span class="g g-Whitespace">    </span><span class="mi">404</span>     <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/rasterio/__init__.py</span> in <span class="ni">open</span><span class="nt">(fp, mode, driver, width, height, count, crs, transform, dtype, nodata, sharing, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span>         <span class="c1"># None.</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span>         <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;r&#39;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">217</span>             <span class="n">s</span> <span class="o">=</span> <span class="n">DatasetReader</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="n">driver</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span>         <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;r+&#39;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span>             <span class="n">s</span> <span class="o">=</span> <span class="n">get_writer_for_path</span><span class="p">(</span><span class="n">path</span><span class="p">)(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="n">driver</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">rasterio/_base.pyx</span> in <span class="ni">rasterio._base.DatasetBase.__init__</span><span class="nt">()</span>
+
+<span class="ne">RasterioIOError</span>: C:\HY-DATA\HENTENKA\KOODIT\Opetus\Automating-GIS-processes\CSC18\data\L5/Helsinki_masked_p188r018_7t20020529_z34__LV-FIN.tif: No such file or directory
 </pre></div>
 </div>
 <p>For calculating the NDVI (Normalized difference vegetation index) you need two bands: band-4 which is the Red channel and band-5 which is the Near Infrared (NIR)</p>
 <ul class="simple">
 <li>Let’s read those bands from our raster source</li>
 </ul>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">red</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">red</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-7-ff45bcfed41e&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">red</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 
-<span class="gp">In [1]: </span><span class="n">nir</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="ne">NameError</span>: name &#39;raster&#39; is not defined
 
-<span class="gp">In [1]: </span><span class="n">red</span>
+<span class="gp">In [8]: </span><span class="n">nir</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">                                                                                                                                                                                                                                                                           ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-8-72a724147a35&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 nir = raster.read(5)</span>
 
-<span class="gp">In [1]: </span><span class="n">nir</span>
+<span class="go">NameError: name &#39;raster&#39; is not defined</span>
 
-<span class="gp">In [1]: </span><span class="nb">type</span><span class="p">(</span><span class="n">nir</span><span class="p">)</span>
+<span class="gp">In [9]: </span><span class="n">red</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-9-3441943cc580&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 red</span>
 
-<span class="gp">In [1]: </span><span class="n">show</span><span class="p">(</span><span class="n">nir</span><span class="p">)</span>
+<span class="go">NameError: name &#39;red&#39; is not defined</span>
+
+<span class="gp">In [10]: </span><span class="n">nir</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-10-e6959948c6c4&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 nir</span>
+
+<span class="go">NameError: name &#39;nir&#39; is not defined</span>
+
+<span class="gp">In [11]: </span><span class="nb">type</span><span class="p">(</span><span class="n">nir</span><span class="p">)</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-11-54f5ea9446b3&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 type(nir)</span>
+
+<span class="go">NameError: name &#39;nir&#39; is not defined</span>
+
+<span class="gp">In [12]: </span><span class="n">show</span><span class="p">(</span><span class="n">nir</span><span class="p">)</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-12-8510fe403e4d&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 show(nir)</span>
+
+<span class="go">NameError: name &#39;nir&#39; is not defined</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="savefig/nir_channel.png"><img alt="savefig/nir_channel.png" src="savefig/nir_channel.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../../_images/nir_channel.png"><img alt="../../_images/nir_channel.png" src="../../_images/nir_channel.png" style="width: 450px;" /></a>
 <p>As we can see the values are stored as numpy.ndarray.</p>
 <ul class="simple">
 <li>Let’s change the data type from uint8 to float so that we can have floating point numbers stored in our arrays.</li>
 </ul>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">red</span> <span class="o">=</span> <span class="n">red</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="n">red</span> <span class="o">=</span> <span class="n">red</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-13-a81c4f1fe874&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">red</span> <span class="o">=</span> <span class="n">red</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
 
-<span class="gp">In [1]: </span><span class="n">nir</span> <span class="o">=</span> <span class="n">nir</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="ne">NameError</span>: name &#39;red&#39; is not defined
 
-<span class="gp">In [1]: </span><span class="n">nir</span>
+<span class="gp">In [14]: </span><span class="n">nir</span> <span class="o">=</span> <span class="n">nir</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="go">                                                                                                                                                                                                                                                                            ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-14-02dd5b6352fd&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 nir = nir.astype(float)</span>
+
+<span class="go">NameError: name &#39;nir&#39; is not defined</span>
+
+<span class="gp">In [15]: </span><span class="n">nir</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-15-e6959948c6c4&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 nir</span>
+
+<span class="go">NameError: name &#39;nir&#39; is not defined</span>
 </pre></div>
 </div>
 <p>Now we can see that the numbers changed to decimal numbers (there is a dot after the zero).</p>
@@ -301,34 +388,77 @@ We need to change that behaviour because we have a lot of 0 values in our data.<
 <ul class="simple">
 <li>Allow 0 division in numpy</li>
 </ul>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="gh">Out[16]: </span><span class="go">{&#39;divide&#39;: &#39;warn&#39;, &#39;invalid&#39;: &#39;warn&#39;, &#39;over&#39;: &#39;warn&#39;, &#39;under&#39;: &#39;ignore&#39;}</span>
 </pre></div>
 </div>
 <p>Now we need to initialize the ndvi with zeros before we do the calculations (this is numpy specific trick)</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">ndvi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">raster</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">rasterio</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [17]: </span><span class="n">ndvi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">raster</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">rasterio</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-17-1ac4d0989b6d&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ndvi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">raster</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">rasterio</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;raster&#39; is not defined
 </pre></div>
 </div>
 <ul class="simple">
 <li>Now we are ready to calculate the NDVI. First, we can create a filter where we calculate the values on such pixels that have a value larger than 0.</li>
 </ul>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span> <span class="p">(</span> <span class="n">red</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nir</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="n">check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span> <span class="p">(</span> <span class="n">red</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nir</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-18-50b80cd631a1&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span> <span class="p">(</span> <span class="n">red</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nir</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;red&#39; is not defined
 </pre></div>
 </div>
 <ul class="simple">
 <li>Now we can apply that filter and calculate the ndvi index.</li>
 </ul>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">ndvi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span> <span class="p">(</span> <span class="n">check</span><span class="p">,</span>  <span class="p">(</span><span class="n">nir</span> <span class="o">-</span> <span class="n">red</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span> <span class="n">nir</span> <span class="o">+</span> <span class="n">red</span> <span class="p">),</span> <span class="o">-</span><span class="mi">999</span> <span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="n">ndvi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span> <span class="p">(</span> <span class="n">check</span><span class="p">,</span>  <span class="p">(</span><span class="n">nir</span> <span class="o">-</span> <span class="n">red</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span> <span class="n">nir</span> <span class="o">+</span> <span class="n">red</span> <span class="p">),</span> <span class="o">-</span><span class="mi">999</span> <span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-19-28e53611b3d3&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ndvi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span> <span class="p">(</span> <span class="n">check</span><span class="p">,</span>  <span class="p">(</span><span class="n">nir</span> <span class="o">-</span> <span class="n">red</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span> <span class="n">nir</span> <span class="o">+</span> <span class="n">red</span> <span class="p">),</span> <span class="o">-</span><span class="mi">999</span> <span class="p">)</span>
 
-<span class="gp">In [1]: </span><span class="n">ndvi</span>
+<span class="ne">NameError</span>: name &#39;check&#39; is not defined
 
-<span class="gp">In [1]: </span><span class="n">ndvi</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="gp">In [20]: </span><span class="n">ndvi</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                     ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-20-56594f0c06e1&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 ndvi</span>
 
-<span class="gp">In [1]: </span><span class="n">ndvi</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="go">NameError: name &#39;ndvi&#39; is not defined</span>
 
-<span class="gp">In [1]: </span><span class="n">show</span><span class="p">(</span><span class="n">ndvi</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;summer&#39;</span><span class="p">)</span>
+<span class="gp">In [21]: </span><span class="n">ndvi</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-21-fcc285a2d903&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 ndvi.mean()</span>
+
+<span class="go">NameError: name &#39;ndvi&#39; is not defined</span>
+
+<span class="gp">In [22]: </span><span class="n">ndvi</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-22-8b332321d689&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 ndvi.std()</span>
+
+<span class="go">NameError: name &#39;ndvi&#39; is not defined</span>
+
+<span class="gp">In [23]: </span><span class="n">show</span><span class="p">(</span><span class="n">ndvi</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;summer&#39;</span><span class="p">)</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-23-d334f22f63f1&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 show(ndvi, cmap=&#39;summer&#39;)</span>
+
+<span class="go">NameError: name &#39;ndvi&#39; is not defined</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="savefig/ndvi.png"><img alt="savefig/ndvi.png" src="savefig/ndvi.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ndvi.png"><img alt="../../_images/ndvi.png" src="../../_images/ndvi.png" style="width: 450px;" /></a>
 </div>
 
 

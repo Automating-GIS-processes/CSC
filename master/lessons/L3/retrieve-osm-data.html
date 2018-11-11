@@ -285,32 +285,15 @@ In fact, osmnx uses the same Nominatim Geocoding API to achieve this which we te
 <li>Let’s retrieve OpenStreetMap (OSM) data by specifying <code class="docutils literal notranslate"><span class="pre">&quot;Kamppi,</span> <span class="pre">Helsinki,</span> <span class="pre">Finland&quot;</span></code> as the address where the data should be downloaded.</li>
 </ul>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">osmnx</span> <span class="kn">as</span> <span class="nn">ox</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-1-d4a103aeed40&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">osmnx</span> <span class="kn">as</span> <span class="nn">ox</span>
-
-<span class="ne">ImportError</span>: No module named &#39;osmnx&#39;
 
 <span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="gp">In [3]: </span><span class="n">place_name</span> <span class="o">=</span> <span class="s2">&quot;Kamppi, Helsinki, Finland&quot;</span>
 
 <span class="gp">In [4]: </span><span class="n">graph</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">graph_from_place</span><span class="p">(</span><span class="n">place_name</span><span class="p">)</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-4-2fe842a0d6eb&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">graph</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">graph_from_place</span><span class="p">(</span><span class="n">place_name</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;ox&#39; is not defined
 
 <span class="gp">In [5]: </span><span class="nb">type</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
-<span class="go">                                                                                                                                                                                                                                                                                          ---------------------------------------------------------------------------</span>
-<span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-5-e279804376b1&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 type(graph)</span>
-
-<span class="go">NameError: name &#39;graph&#39; is not defined</span>
+<span class="gh">Out[5]: </span><span class="go">networkx.classes.multidigraph.MultiDiGraph</span>
 </pre></div>
 </div>
 <p>Okey, as we can see the data that we retrieved is a special data object called <code class="docutils literal notranslate"><span class="pre">networkx.classes.multidigraph.MultiDiGraph</span></code>. A DiGraph is a data type that stores nodes and edges with optional data, or attributes.
@@ -323,12 +306,6 @@ along networks using e.g. <a class="reference external" href="https://en.wikiped
 </ul>
 <p>hence as a result it returns a matplotlib figure and axis objects.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">plot_graph</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-6-559a0acfe53a&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">plot_graph</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;ox&#39; is not defined
 
 <span class="gp">In [7]: </span><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
@@ -341,36 +318,14 @@ along networks using e.g. <a class="reference external" href="https://en.wikiped
 </ul>
 <p>Helsinki that can be retrieved with <code class="docutils literal notranslate"><span class="pre">gdf_from_place</span></code> function.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">area</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">gdf_from_place</span><span class="p">(</span><span class="n">place_name</span><span class="p">)</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-8-62d509989fb5&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">area</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">gdf_from_place</span><span class="p">(</span><span class="n">place_name</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;ox&#39; is not defined
 
 <span class="gp">In [9]: </span><span class="n">buildings</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">buildings_from_place</span><span class="p">(</span><span class="n">place_name</span><span class="p">)</span>
-<span class="go">                                                                                                                                                                                                                                                                                       ---------------------------------------------------------------------------</span>
-<span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-9-5cba73cb9448&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 buildings = ox.buildings_from_place(place_name)</span>
-
-<span class="go">NameError: name &#39;ox&#39; is not defined</span>
 
 <span class="gp">In [10]: </span><span class="nb">type</span><span class="p">(</span><span class="n">area</span><span class="p">)</span>
-<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ---------------------------------------------------------------------------</span>
-<span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-10-368c4fa0b8ee&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 type(area)</span>
-
-<span class="go">NameError: name &#39;area&#39; is not defined</span>
+<span class="gh">Out[10]: </span><span class="go">geopandas.geodataframe.GeoDataFrame</span>
 
 <span class="gp">In [11]: </span><span class="nb">type</span><span class="p">(</span><span class="n">buildings</span><span class="p">)</span>
-<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ---------------------------------------------------------------------------</span>
-<span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-11-ee532beaa4de&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 type(buildings)</span>
-
-<span class="go">NameError: name &#39;buildings&#39; is not defined</span>
+<span class="go">                                             Out[11]: geopandas.geodataframe.GeoDataFrame</span>
 </pre></div>
 </div>
 <p>As a result we got the data as GeoDataFrames. Hence, we can plot them using the familiar <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function of Geopandas.
@@ -381,36 +336,31 @@ about the edges.</p>
 <li>Let’s extract the nodes and edges from the graph as GeoDataFrames.</li>
 </ul>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">graph_to_gdfs</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-12-3de8ab08da95&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">graph_to_gdfs</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;ox&#39; is not defined
 
 <span class="gp">In [13]: </span><span class="n">nodes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">                                                                                                                                                                                                                                                                                          ---------------------------------------------------------------------------</span>
-<span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-13-47083f45a780&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 nodes.head()</span>
+<span class="gh">Out[13]: </span><span class="go"></span>
+<span class="go">           highway              ...                                     geometry</span>
+<span class="go">25216594       NaN              ...                POINT (24.9210566 60.1647939)</span>
+<span class="go">25238874       NaN              ...                POINT (24.9210282 60.1636645)</span>
+<span class="go">25238883  crossing              ...                POINT (24.9214411 60.1634517)</span>
+<span class="go">25238933  bus_stop              ...                 POINT (24.924529 60.1611136)</span>
+<span class="go">25238944       NaN              ...                 POINT (24.9212859 60.164631)</span>
 
-<span class="go">NameError: name &#39;nodes&#39; is not defined</span>
+<span class="go">[5 rows x 6 columns]</span>
 
 <span class="gp">In [14]: </span><span class="n">edges</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ---------------------------------------------------------------------------</span>
-<span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-14-74fa6e7602a3&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 edges.head()</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      Out[14]: </span>
+<span class="go">  access bridge     ...               u           v</span>
+<span class="go">0    NaN    NaN     ...      3216400385   301360890</span>
+<span class="go">1    NaN    NaN     ...      1372233731  1005727584</span>
+<span class="go">2    NaN    NaN     ...      1372233731   298367080</span>
+<span class="go">3    NaN    NaN     ...      1372233731   292859610</span>
+<span class="go">4    NaN    NaN     ...      1372233731   311043714</span>
 
-<span class="go">NameError: name &#39;edges&#39; is not defined</span>
+<span class="go">[5 rows x 17 columns]</span>
 
 <span class="gp">In [15]: </span><span class="nb">type</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
-<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ---------------------------------------------------------------------------</span>
-<span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-15-520b6b5f2c05&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 type(edges)</span>
-
-<span class="go">NameError: name &#39;edges&#39; is not defined</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Out[15]: geopandas.geodataframe.GeoDataFrame</span>
 </pre></div>
 </div>
 <p>Nice! Now, as we can see, we have our graph as GeoDataFrames and we can plot them using the same functions and tools as we have used before.</p>
@@ -426,28 +376,13 @@ Take a look of this <a class="reference external" href="https://github.com/gboei
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
 <span class="gp">In [17]: </span><span class="n">area</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-17-ef660def8d05&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">area</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;area&#39; is not defined
+<span class="gh">Out[17]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe368a0dc50&gt;</span>
 
 <span class="gp">In [18]: </span><span class="n">edges</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;#BC8F8F&#39;</span><span class="p">)</span>
-<span class="go">                                                                                                                                                                                                                                                                                         ---------------------------------------------------------------------------</span>
-<span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-18-c0ea898698f4&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 edges.plot(ax=ax, linewidth=1, edgecolor=&#39;#BC8F8F&#39;)</span>
-
-<span class="go">NameError: name &#39;edges&#39; is not defined</span>
+<span class="go">                                                                   Out[18]: &lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe368a0dc50&gt;</span>
 
 <span class="gp">In [19]: </span><span class="n">buildings</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;khaki&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
-<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ---------------------------------------------------------------------------</span>
-<span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-19-65971f202ae8&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 buildings.plot(ax=ax, facecolor=&#39;khaki&#39;, alpha=0.7)</span>
-
-<span class="go">NameError: name &#39;buildings&#39; is not defined</span>
+<span class="go">                                                                                                                                      Out[19]: &lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe368a0dc50&gt;</span>
 
 <span class="gp">In [20]: </span><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
@@ -492,7 +427,7 @@ In the lesson we won’t cover these, because we wanted to keep as much control 
   <div role="contentinfo">
     <p>
         &copy; Copyright 2018, Henrikki Tenkanen
-      Last updated on Jan 13, 2018.
+      Last updated on Jan 14, 2018.
 
     </p>
   </div>
