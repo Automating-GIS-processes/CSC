@@ -145,7 +145,7 @@ Contents
    notebooks/L5/plotting-raster.ipynb
    notebooks/L5/clipping-raster.ipynb
    lessons/L5/raster-calculations
-   lessons/L5/raster-mosaic
+   notebooks/L5/raster-mosaic.ipynb
    lessons/L5/zonal-statistics
 
 .. toctree::
