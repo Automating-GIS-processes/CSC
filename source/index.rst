@@ -141,7 +141,7 @@ Contents
 
    lessons/L5/overview
    lessons/L5/download-data
-   lessons/L5/reading-raster
+   notebooks/L5/reading-raster.ipynb
    lessons/L5/plotting-raster
    lessons/L5/clipping-raster
    lessons/L5/raster-calculations
