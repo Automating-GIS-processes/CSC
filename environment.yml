@@ -8,6 +8,8 @@ dependencies:
   - geopandas
   - geopy
   - rasterio
+  - rasterstats
+  - osmnx
   - imageio
   - pip:
     - git+https://github.com/mullenkamp/PyCRS
