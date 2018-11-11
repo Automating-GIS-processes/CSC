@@ -52,6 +52,7 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
+    'bokeh.sphinxext.bokeh_plot',
 
     # IPython console
     'IPython.sphinxext.ipython_console_highlighting',
@@ -81,6 +82,12 @@ templates_path = ['_templates']
 #
 # source_suffix = ['.rst', '.md']
 source_suffix = '.rst'
+
+# ===========
+# Bokeh plots
+# ===========
+# Allows to easily add Bokeh plots if bokeh is runned on a server.
+#bokeh_plot_pyfile_include_dirs = [r"C:\HY-DATA\HENTENKA\KOODIT\Opetus\Automating-GIS-processes\CSC18\source\codes\bokeh"]
 
 # The encoding of source files.
 #
