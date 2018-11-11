@@ -143,7 +143,7 @@ Contents
    lessons/L5/download-data
    notebooks/L5/reading-raster.ipynb
    notebooks/L5/plotting-raster.ipynb
-   lessons/L5/clipping-raster
+   notebooks/L5/clipping-raster.ipynb
    lessons/L5/raster-calculations
    lessons/L5/raster-mosaic
    lessons/L5/zonal-statistics
