@@ -1,5 +1,5 @@
-Raster calculations
-===================
+Raster map algebra
+==================
 
 Conducting calculations between bands or raster is another common GIS task. Here, we will be calculating ``NDVI`` (Normalized difference vegetation index)
 based on the Landsat dataset that we have downloaded from Helsinki region. Conducting calculations with rasterio

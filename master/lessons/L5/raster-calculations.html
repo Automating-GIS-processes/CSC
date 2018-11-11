@@ -19,7 +19,7 @@
     </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Raster calculations &mdash; Intro to Python GIS CSC documentation</title>
+  <title>Raster map algebra &mdash; Intro to Python GIS CSC documentation</title>
   
 
   
@@ -40,8 +40,6 @@
   <link rel="stylesheet" href="../../_static/banner.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Creating a raster mosaic" href="../../notebooks/L5/raster-mosaic.html" />
-    <link rel="prev" title="Masking / clipping raster" href="../../notebooks/L5/clipping-raster.html" />
     <link href="../../_static/geo-python.css" rel="stylesheet" type="text/css">
      
 
@@ -138,13 +136,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../L4/exercise-4-hints.html">Exercise 4 hints</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Lesson 5</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="download-data.html">Automatize data download</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks/L5/reading-raster.html">Reading raster files with Rasterio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks/L5/plotting-raster.html">Visualizing raster layers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks/L5/clipping-raster.html">Masking / clipping raster</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Raster calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/L5/raster-map-algebra.html">Raster map algebra</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks/L5/raster-mosaic.html">Creating a raster mosaic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zonal-statistics.html">Zonal statistics</a></li>
 </ul>
@@ -192,7 +190,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Raster calculations</li>
+      <li>Raster map algebra</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -238,8 +236,8 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="raster-calculations">
-<h1>Raster calculations<a class="headerlink" href="#raster-calculations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="raster-map-algebra">
+<h1>Raster map algebra<a class="headerlink" href="#raster-map-algebra" title="Permalink to this headline">¶</a></h1>
 <p>Conducting calculations between bands or raster is another common GIS task. Here, we will be calculating <code class="docutils literal notranslate"><span class="pre">NDVI</span></code> (Normalized difference vegetation index)
 based on the Landsat dataset that we have downloaded from Helsinki region. Conducting calculations with rasterio
 is fairly straightforward if the extent etc. matches because the values of the rasters are stored as <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays
@@ -466,15 +464,6 @@ We need to change that behaviour because we have a lot of 0 values in our data.<
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../../notebooks/L5/raster-mosaic.html" class="btn btn-neutral float-right" title="Creating a raster mosaic" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../../notebooks/L5/clipping-raster.html" class="btn btn-neutral" title="Masking / clipping raster" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
