@@ -150,8 +150,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../L5/overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L5/download-data.html">Automatize data download</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../L5/reading-raster.html">Reading raster files with Rasterio</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../L5/plotting-raster.html">Visualizing raster layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/L5/reading-raster.html">Reading raster files with Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/L5/plotting-raster.html">Visualizing raster layers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L5/clipping-raster.html">Masking / clipping raster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L5/raster-calculations.html">Raster calculations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L5/raster-mosaic.html">Creating a raster mosaic</a></li>
@@ -367,11 +367,11 @@ more or less Euclidian distances.</p>
 <span class="gp">In [11]: </span><span class="n">classifications</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[11]: </span><span class="go"></span>
 <span class="go">   pt_r_tt</span>
-<span class="go">0        6</span>
-<span class="go">1        6</span>
+<span class="go">0        7</span>
+<span class="go">1        7</span>
 <span class="go">2        6</span>
-<span class="go">3        6</span>
-<span class="go">4        6</span>
+<span class="go">3        7</span>
+<span class="go">4        7</span>
 </pre></div>
 </div>
 <p>Okey, so we have a DataFrame where our input column was classified into 9 different classes (numbers 1-9) based on <a class="reference external" href="http://wiki-1-1930356585.us-east-1.elb.amazonaws.com/wiki/index.php/Jenks_Natural_Breaks_Classification">Natural Breaks classification</a>.</p>
@@ -386,11 +386,11 @@ more or less Euclidian distances.</p>
 <span class="gp">In [14]: </span><span class="n">acc</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[14]: </span><span class="go"></span>
 <span class="go">   car_m_d     ...      nb_pt_r_tt</span>
-<span class="go">0    15981     ...               6</span>
-<span class="go">1    16190     ...               6</span>
+<span class="go">0    15981     ...               7</span>
+<span class="go">1    16190     ...               7</span>
 <span class="go">2    15727     ...               6</span>
-<span class="go">3    15975     ...               6</span>
-<span class="go">4    16136     ...               6</span>
+<span class="go">3    15975     ...               7</span>
+<span class="go">4    16136     ...               7</span>
 
 <span class="go">[5 rows x 21 columns]</span>
 </pre></div>
@@ -449,11 +449,11 @@ and find out grid cells where the <strong>travel time is lower or equal to 20 mi
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="n">acc</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[19]: </span><span class="go"></span>
 <span class="go">   car_m_d  car_m_t      ...        nb_pt_r_tt  Suitable_area</span>
-<span class="go">0    15981       36      ...                 6              0</span>
-<span class="go">1    16190       34      ...                 6              0</span>
+<span class="go">0    15981       36      ...                 7              0</span>
+<span class="go">1    16190       34      ...                 7              0</span>
 <span class="go">2    15727       33      ...                 6              0</span>
-<span class="go">3    15975       33      ...                 6              0</span>
-<span class="go">4    16136       35      ...                 6              0</span>
+<span class="go">3    15975       33      ...                 7              0</span>
+<span class="go">4    16136       35      ...                 7              0</span>
 
 <span class="go">[5 rows x 22 columns]</span>
 </pre></div>
