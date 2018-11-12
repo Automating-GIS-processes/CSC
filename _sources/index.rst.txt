@@ -120,21 +120,19 @@ Contents
 
    lessons/L3/overview
    notebooks/L3/Geocoding_in_Geopandas.ipynb
-   lessons/L3/retrieve-osm-data
-   lessons/L3/reclassify
+   notebooks/L3/retrieve-osm-data.ipynb
+   notebooks/L3/reclassify.ipynb
    lessons/L3/ex-3
-   lessons/L3/exercise-3-hints
 
 .. toctree::
    :maxdepth: 2
    :caption: Lesson 4
 
    lessons/L4/overview
-   lessons/L4/point-in-polygon
-   lessons/L4/spatial-join
-   lessons/L4/nearest-neighbour
+   notebooks/L4/point-in-polygon.ipynb
+   notebooks/L4/spatial-join.ipynb
+   notebooks/L4/nearest-neighbour.ipynb
    lessons/L4/ex-4
-   lessons/L4/exercise-4-hints
 
 .. toctree::
    :maxdepth: 2
