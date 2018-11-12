@@ -435,7 +435,7 @@ contains few addresses around Helsinki Region.</p>
 </ul>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [3]:
+<span></span>In [2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -445,7 +445,7 @@ contains few addresses around Helsinki Region.</p>
 <span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span>
 
 <span class="c1"># Filepath</span>
-<span class="n">fp</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;addresses.txt&quot;</span>
+<span class="n">fp</span> <span class="o">=</span> <span class="s2">&quot;L3_data/addresses.txt&quot;</span>
 
 <span class="c1"># Read the data</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
@@ -454,7 +454,7 @@ contains few addresses around Helsinki Region.</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [4]:
+<span></span>In [3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -465,7 +465,7 @@ contains few addresses around Helsinki Region.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[4]:
+<span></span>Out[3]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -525,31 +525,22 @@ contains few addresses around Helsinki Region.</p>
 addresses.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [14]:
+<span></span>In [8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Import the geocoding tool</span>
+<span></span><span class="c1"># Import the geocoding tool and geopy</span>
 <span class="kn">from</span> <span class="nn">geopandas.tools</span> <span class="kn">import</span> <span class="n">geocode</span>
 
 <span class="c1"># Geocode addresses with Nominatim backend</span>
-<span class="n">geo</span> <span class="o">=</span> <span class="n">geocode</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;addr&#39;</span><span class="p">],</span> <span class="n">provider</span><span class="o">=</span><span class="s1">&#39;nominatim&#39;</span><span class="p">)</span>
+<span class="n">geo</span> <span class="o">=</span> <span class="n">geocode</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;addr&#39;</span><span class="p">],</span> <span class="n">provider</span><span class="o">=</span><span class="s1">&#39;nominatim&#39;</span><span class="p">,</span> <span class="n">user_agent</span><span class="o">=</span><span class="s1">&#39;csc_user_ht&#39;</span><span class="p">)</span>
 <span class="n">geo</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="stderr output_area docutils container">
-<div class="highlight"><pre>
-/opt/conda/lib/python3.6/site-packages/geopy/geocoders/osm.py:143: UserWarning: Using Nominatim with the default &#34;geopy/1.17.0&#34; `user_agent` is strongly discouraged, as it violates Nominatim&#39;s ToS https://operations.osmfoundation.org/policies/nominatim/ and may possibly cause 403 and 429 HTTP errors. Please specify a custom `user_agent` with `Nominatim(user_agent=&#34;my-application&#34;)` or by overriding the default `user_agent`: `geopy.geocoders.options.default_user_agent = &#34;my-application&#34;`. In geopy 2.0 this will become an exception.
-  UserWarning
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[14]:
+<span></span>Out[8]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -602,7 +593,7 @@ a <strong>Table Join</strong>.</p>
 might remember from our earlier lessons, combining data from different
 tables based on common <code class="docutils literal notranslate"><span class="pre">key</span></code> attribute can be done easily in
 Pandas/Geopandas using
-<code class="docutils literal notranslate"><span class="pre">.merge()</span> <span class="pre">&lt;https://geo-python.github.io/2018/lessons/L6/exercise-6.html?highlight=merge#joining-data-from-one-dataframe-to-another&gt;</span></code>__
+<a class="reference external" href="https://geo-python.github.io/2018/lessons/L6/exercise-6.html?highlight=merge#joining-data-from-one-dataframe-to-another%3E">.merge()</a>
 -function.</p>
 <p>However, sometimes it is useful to join two tables together based on the
 <strong>index</strong> of those DataFrames. In such case, we assume that there is
@@ -615,7 +606,7 @@ original <code class="docutils literal notranslate"><span class="pre">data</span
 merges the two DataFrames together based on index by default.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [19]:
+<span></span>In [10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -626,7 +617,7 @@ merges the two DataFrames together based on index by default.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[19]:
+<span></span>Out[10]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -678,8 +669,8 @@ merges the two DataFrames together based on index by default.</p>
     </tr>
     <tr>
       <th>3</th>
-      <td>POINT (24.9768441 60.1941864)</td>
-      <td>Hermannin rantatie, Hermanninranta, Hermanni, ...</td>
+      <td>POINT (24.9655355 60.2008878)</td>
+      <td>1, Hermannin rantatie, Hermanninmäki, Hermanni...</td>
       <td>1003</td>
       <td>Hermannin rantatie 1, 00580 Helsinki, Finland</td>
     </tr>
@@ -699,7 +690,7 @@ merges the two DataFrames together based on index by default.</p>
 </ul>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [20]:
+<span></span>In [11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -709,7 +700,7 @@ merges the two DataFrames together based on index by default.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[20]:
+<span></span>Out[11]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -724,12 +715,12 @@ all original columns plus a new column for <code class="docutils literal notrans
 </ul>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [22]:
+<span></span>In [12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># Output file path</span>
-<span class="n">outfp</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;addresses.shp&quot;</span>
+<span class="n">outfp</span> <span class="o">=</span> <span class="s2">&quot;L3_data/addresses.shp&quot;</span>
 
 <span class="c1"># Save to Shapefile</span>
 <span class="n">join</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="n">outfp</span><span class="p">)</span>

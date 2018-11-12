@@ -127,6 +127,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#Read-/-write-MapInfo-Tab">Read / write MapInfo Tab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Read-PostGIS-database-using-psycopg2">Read PostGIS database using psycopg2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Read-/-write-PostGIS-database-using-SqlAlchemy-+-GeoAlchemy">Read / write PostGIS database using SqlAlchemy + GeoAlchemy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Read-/-write-Spatialite-database">Read / write Spatialite database</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Read-Web-Feature-Service-(WFS)">Read Web Feature Service (WFS)</a></li>
 </ul>
 </li>
@@ -427,7 +428,7 @@ following:</li>
 </ul>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [1]:
+<span></span>In [44]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -440,23 +441,25 @@ following:</li>
 <span class="c1"># All these can be used for reading data from them</span>
 <span class="c1"># and most often also writing data into</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">start</span><span class="p">()</span><span class="o">.</span><span class="n">drivers</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">env</span><span class="o">.</span><span class="n">start</span><span class="p">()</span><span class="o">.</span><span class="n">drivers</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[44]:
+</pre></div>
 </div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-dict_keys([&#39;PCIDSK&#39;, &#39;netCDF&#39;, &#39;JP2OpenJPEG&#39;, &#39;PDF&#39;, &#39;DB2ODBC&#39;, &#39;ESRI Shapefile&#39;, &#39;MapInfo File&#39;, &#39;UK .NTF&#39;, &#39;OGR_SDTS&#39;, &#39;S57&#39;, &#39;DGN&#39;, &#39;OGR_VRT&#39;, &#39;REC&#39;, &#39;Memory&#39;, &#39;BNA&#39;, &#39;CSV&#39;, &#39;NAS&#39;, &#39;GML&#39;, &#39;GPX&#39;, &#39;KML&#39;, &#39;GeoJSON&#39;, &#39;OGR_GMT&#39;, &#39;GPKG&#39;, &#39;SQLite&#39;, &#39;ODBC&#39;, &#39;WAsP&#39;, &#39;PGeo&#39;, &#39;MSSQLSpatial&#39;, &#39;PostgreSQL&#39;, &#39;OpenFileGDB&#39;, &#39;XPlane&#39;, &#39;DXF&#39;, &#39;CAD&#39;, &#39;Geoconcept&#39;, &#39;GeoRSS&#39;, &#39;GPSTrackMaker&#39;, &#39;VFK&#39;, &#39;PGDUMP&#39;, &#39;OSM&#39;, &#39;GPSBabel&#39;, &#39;SUA&#39;, &#39;OpenAir&#39;, &#39;OGR_PDS&#39;, &#39;WFS&#39;, &#39;HTF&#39;, &#39;AeronavFAA&#39;, &#39;Geomedia&#39;, &#39;EDIGEO&#39;, &#39;GFT&#39;, &#39;SVG&#39;, &#39;CouchDB&#39;, &#39;Cloudant&#39;, &#39;Idrisi&#39;, &#39;ARCGEN&#39;, &#39;SEGUKOOA&#39;, &#39;SEGY&#39;, &#39;XLS&#39;, &#39;ODS&#39;, &#39;XLSX&#39;, &#39;ElasticSearch&#39;, &#39;Walk&#39;, &#39;Carto&#39;, &#39;AmigoCloud&#39;, &#39;SXF&#39;, &#39;Selafin&#39;, &#39;JML&#39;, &#39;PLSCENES&#39;, &#39;CSW&#39;, &#39;VDV&#39;, &#39;GMLAS&#39;, &#39;TIGER&#39;, &#39;AVCBin&#39;, &#39;AVCE00&#39;, &#39;HTTP&#39;])
-</pre></div></div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>dict_keys([&#39;PCIDSK&#39;, &#39;netCDF&#39;, &#39;JP2OpenJPEG&#39;, &#39;PDF&#39;, &#39;DB2ODBC&#39;, &#39;ESRI Shapefile&#39;, &#39;MapInfo File&#39;, &#39;UK .NTF&#39;, &#39;OGR_SDTS&#39;, &#39;S57&#39;, &#39;DGN&#39;, &#39;OGR_VRT&#39;, &#39;REC&#39;, &#39;Memory&#39;, &#39;BNA&#39;, &#39;CSV&#39;, &#39;NAS&#39;, &#39;GML&#39;, &#39;GPX&#39;, &#39;KML&#39;, &#39;GeoJSON&#39;, &#39;OGR_GMT&#39;, &#39;GPKG&#39;, &#39;SQLite&#39;, &#39;ODBC&#39;, &#39;WAsP&#39;, &#39;PGeo&#39;, &#39;MSSQLSpatial&#39;, &#39;PostgreSQL&#39;, &#39;OpenFileGDB&#39;, &#39;XPlane&#39;, &#39;DXF&#39;, &#39;CAD&#39;, &#39;Geoconcept&#39;, &#39;GeoRSS&#39;, &#39;GPSTrackMaker&#39;, &#39;VFK&#39;, &#39;PGDUMP&#39;, &#39;OSM&#39;, &#39;GPSBabel&#39;, &#39;SUA&#39;, &#39;OpenAir&#39;, &#39;OGR_PDS&#39;, &#39;WFS&#39;, &#39;HTF&#39;, &#39;AeronavFAA&#39;, &#39;Geomedia&#39;, &#39;EDIGEO&#39;, &#39;GFT&#39;, &#39;SVG&#39;, &#39;CouchDB&#39;, &#39;Cloudant&#39;, &#39;Idrisi&#39;, &#39;ARCGEN&#39;, &#39;SEGUKOOA&#39;, &#39;SEGY&#39;, &#39;XLS&#39;, &#39;ODS&#39;, &#39;XLSX&#39;, &#39;ElasticSearch&#39;, &#39;Walk&#39;, &#39;Carto&#39;, &#39;AmigoCloud&#39;, &#39;SXF&#39;, &#39;Selafin&#39;, &#39;JML&#39;, &#39;PLSCENES&#39;, &#39;CSW&#39;, &#39;VDV&#39;, &#39;GMLAS&#39;, &#39;TIGER&#39;, &#39;AVCBin&#39;, &#39;AVCE00&#39;, &#39;HTTP&#39;])
+</pre></div>
+</div>
 </div>
 <div class="section" id="Read-/-write-Shapefile">
 <h2>Read / write Shapefile<a class="headerlink" href="#Read-/-write-Shapefile" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [2]:
+<span></span>In [34]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -471,6 +474,57 @@ dict_keys([&#39;PCIDSK&#39;, &#39;netCDF&#39;, &#39;JP2OpenJPEG&#39;, &#39;PDF&#
 <span class="n">data</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="n">outfp</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">data</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;L2_data/Finland.sqlite&quot;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s1">&#39;SQLite&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">DriverError</span>                               Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-37-d3aa9d8ec46f&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 1</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>data<span class="ansi-yellow-intense-fg ansi-bold">.</span>to_file<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#34;L2_data/Finland.sqlite&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> driver<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39;SQLite&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-green-intense-fg ansi-bold">C:\ProgramData\Anaconda3\lib\site-packages\geopandas\geodataframe.py</span> in <span class="ansi-cyan-fg">to_file</span><span class="ansi-blue-intense-fg ansi-bold">(self, filename, driver, schema, **kwargs)</span>
+<span class="ansi-green-fg">    411</span>         &#34;&#34;&#34;
+<span class="ansi-green-fg">    412</span>         <span class="ansi-green-intense-fg ansi-bold">from</span> geopandas<span class="ansi-yellow-intense-fg ansi-bold">.</span>io<span class="ansi-yellow-intense-fg ansi-bold">.</span>file <span class="ansi-green-intense-fg ansi-bold">import</span> to_file
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 413</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>to_file<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">,</span> filename<span class="ansi-yellow-intense-fg ansi-bold">,</span> driver<span class="ansi-yellow-intense-fg ansi-bold">,</span> schema<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    414</span>
+<span class="ansi-green-fg">    415</span>     <span class="ansi-green-intense-fg ansi-bold">def</span> to_crs<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">,</span> crs<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> epsg<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> inplace<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-green-intense-fg ansi-bold">False</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+
+<span class="ansi-green-intense-fg ansi-bold">C:\ProgramData\Anaconda3\lib\site-packages\geopandas\io\file.py</span> in <span class="ansi-cyan-fg">to_file</span><span class="ansi-blue-intense-fg ansi-bold">(df, filename, driver, schema, **kwargs)</span>
+<span class="ansi-green-fg">    108</span>     <span class="ansi-green-intense-fg ansi-bold">with</span> fiona<span class="ansi-yellow-intense-fg ansi-bold">.</span>drivers<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    109</span>         with fiona.open(filename, &#39;w&#39;, driver=driver, crs=df.crs,
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 110</span><span class="ansi-yellow-intense-fg ansi-bold">                         schema=schema, **kwargs) as colxn:
+</span><span class="ansi-green-fg">    111</span>             colxn<span class="ansi-yellow-intense-fg ansi-bold">.</span>writerecords<span class="ansi-yellow-intense-fg ansi-bold">(</span>df<span class="ansi-yellow-intense-fg ansi-bold">.</span>iterfeatures<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    112</span>
+
+<span class="ansi-green-intense-fg ansi-bold">C:\ProgramData\Anaconda3\lib\site-packages\fiona\__init__.py</span> in <span class="ansi-cyan-fg">open</span><span class="ansi-blue-intense-fg ansi-bold">(path, mode, driver, schema, crs, encoding, layer, vfs, enabled_drivers, crs_wkt)</span>
+<span class="ansi-green-fg">    173</span>         c = Collection(path, mode, crs=crs, driver=driver, schema=this_schema,
+<span class="ansi-green-fg">    174</span>                        encoding<span class="ansi-yellow-intense-fg ansi-bold">=</span>encoding<span class="ansi-yellow-intense-fg ansi-bold">,</span> layer<span class="ansi-yellow-intense-fg ansi-bold">=</span>layer<span class="ansi-yellow-intense-fg ansi-bold">,</span> vsi<span class="ansi-yellow-intense-fg ansi-bold">=</span>vsi<span class="ansi-yellow-intense-fg ansi-bold">,</span> archive<span class="ansi-yellow-intense-fg ansi-bold">=</span>archive<span class="ansi-yellow-intense-fg ansi-bold">,</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 175</span><span class="ansi-yellow-intense-fg ansi-bold">                        enabled_drivers=enabled_drivers, crs_wkt=crs_wkt)
+</span><span class="ansi-green-fg">    176</span>     <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    177</span>         raise ValueError(
+
+<span class="ansi-green-intense-fg ansi-bold">C:\ProgramData\Anaconda3\lib\site-packages\fiona\collection.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-intense-fg ansi-bold">(self, path, mode, driver, schema, crs, encoding, layer, vsi, archive, enabled_drivers, crs_wkt, **kwargs)</span>
+<span class="ansi-green-fg">    116</span>             <span class="ansi-green-intense-fg ansi-bold">elif</span> driver <span class="ansi-green-intense-fg ansi-bold">not</span> <span class="ansi-green-intense-fg ansi-bold">in</span> supported_drivers<span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    117</span>                 raise DriverError(
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 118</span><span class="ansi-yellow-intense-fg ansi-bold">                     &#34;unsupported driver: %r&#34; % driver)
+</span><span class="ansi-green-fg">    119</span>             <span class="ansi-green-intense-fg ansi-bold">elif</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>mode <span class="ansi-green-intense-fg ansi-bold">not</span> <span class="ansi-green-intense-fg ansi-bold">in</span> supported_drivers<span class="ansi-yellow-intense-fg ansi-bold">[</span>driver<span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    120</span>                 raise DriverError(
+
+<span class="ansi-red-intense-fg ansi-bold">DriverError</span>: unsupported driver: &#39;SQLite&#39;
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Read-/-write-GeoJSON">
@@ -676,6 +730,219 @@ dict_keys([&#39;PCIDSK&#39;, &#39;netCDF&#39;, &#39;JP2OpenJPEG&#39;, &#39;PDF&#
 <span class="n">data</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">target_table</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="Read-/-write-Spatialite-database">
+<h2>Read / write Spatialite database<a class="headerlink" href="#Read-/-write-Spatialite-database" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Parse Geometry type of the input Data</span>
+<span class="n">gtype</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">geom_type</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">gtype</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Mixed Geometries! Cannot insert into SQLite table.&quot;</span>
+<span class="n">gtype</span> <span class="o">=</span> <span class="n">gtype</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">geom_type</span> <span class="o">=</span> <span class="n">gtype</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="n">geom_type</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[43]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&#39;POLYGON&#39;
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="kn">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">shapely.wkb</span> <span class="kn">as</span> <span class="nn">swkb</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">event</span>
+<span class="kn">from</span> <span class="nn">sqlite3</span> <span class="kn">import</span> <span class="n">dbapi2</span> <span class="k">as</span> <span class="n">sqlite</span>
+
+<span class="c1"># DB path</span>
+<span class="n">dbfp</span> <span class="o">=</span> <span class="s1">&#39;L2_data/Finland.sqlite&#39;</span>
+
+<span class="c1"># Name for the table</span>
+<span class="n">tbl_name</span> <span class="o">=</span> <span class="s1">&#39;finland&#39;</span>
+
+<span class="c1"># SRID (crs of your data)</span>
+<span class="n">srid</span> <span class="o">=</span> <span class="mi">4326</span>
+
+<span class="c1"># Parse Geometry type of the input Data</span>
+<span class="n">gtype</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">geom_type</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">gtype</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Mixed Geometries! Cannot insert into SQLite table.&quot;</span>
+<span class="n">geom_type</span> <span class="o">=</span> <span class="n">gtype</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+
+<span class="c1"># Initialize database engine</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;sqlite:///{db}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">dbfp</span><span class="p">),</span> <span class="n">module</span><span class="o">=</span><span class="n">sqlite</span><span class="p">)</span>
+
+<span class="c1"># Initialize table without geometries</span>
+<span class="n">geo</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;geometry&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dbdata</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dbfp</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">geo</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">tbl_name</span><span class="p">,</span> <span class="n">conn</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="c1"># Enable spatialite extension</span>
+<span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dbfp</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">enable_load_extension</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">load_extension</span><span class="p">(</span><span class="s2">&quot;mod_spatialite&quot;</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT InitSpatialMetaData(1);&quot;</span><span class="p">)</span>
+    <span class="c1"># Add geometry column with specified CRS with defined geometry typehaving two dimensions</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="s2">&quot;SELECT AddGeometryColumn({table}, &#39;wkb_geometry&#39;,</span><span class="se">\</span>
+<span class="s2">        {srid}, {geom_type}, 2);&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">tbl_name</span><span class="p">,</span> <span class="n">srid</span><span class="o">=</span><span class="n">srid</span><span class="p">,</span> <span class="n">geom_type</span><span class="o">=</span><span class="n">geom_type</span><span class="p">)</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">OperationalError</span>                          Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-48-dd1a55f72739&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-fg">     32</span> <span class="ansi-green-intense-fg ansi-bold">with</span> sqlite3<span class="ansi-yellow-intense-fg ansi-bold">.</span>connect<span class="ansi-yellow-intense-fg ansi-bold">(</span>dbfp<span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-green-intense-fg ansi-bold">as</span> conn<span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">     33</span>     conn<span class="ansi-yellow-intense-fg ansi-bold">.</span>enable_load_extension<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-green-intense-fg ansi-bold">True</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-intense-fg ansi-bold">---&gt; 34</span><span class="ansi-yellow-intense-fg ansi-bold">     </span>conn<span class="ansi-yellow-intense-fg ansi-bold">.</span>load_extension<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#34;mod_spatialite&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">     35</span>     conn<span class="ansi-yellow-intense-fg ansi-bold">.</span>execute<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#34;SELECT InitSpatialMetaData(1);&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">     36</span>     <span class="ansi-red-intense-fg ansi-bold"># Add geometry column with specified CRS with defined geometry typehaving two dimensions</span>
+
+<span class="ansi-red-intense-fg ansi-bold">OperationalError</span>: The specified module could not be found.
+
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="kn">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">shapely.wkb</span> <span class="kn">as</span> <span class="nn">swkb</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">event</span>
+
+<span class="c1"># DB path</span>
+<span class="n">dbfp</span> <span class="o">=</span> <span class="s1">&#39;L2_data/Finland.sqlite&#39;</span>
+
+<span class="c1"># Name for the table</span>
+<span class="n">tbl_name</span> <span class="o">=</span> <span class="s1">&#39;finland&#39;</span>
+
+<span class="c1"># SRID (crs of your data)</span>
+<span class="n">srid</span> <span class="o">=</span> <span class="mi">4326</span>
+
+<span class="c1"># Parse Geometry type of the input Data</span>
+<span class="n">gtype</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">geom_type</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">gtype</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Mixed Geometries! Cannot insert into SQLite table.&quot;</span>
+<span class="n">geom_type</span> <span class="o">=</span> <span class="n">gtype</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+
+<span class="c1"># Initialize database engine</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;sqlite:///{db}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">dbfp</span><span class="p">),</span> <span class="n">module</span><span class="o">=</span><span class="n">sqlite</span><span class="p">)</span>
+
+<span class="c1"># Initialize table without geometries</span>
+<span class="n">geo</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;geometry&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dbfp</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">geo</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">tbl_name</span><span class="p">,</span> <span class="n">conn</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="c1"># Enable spatialite extension</span>
+<span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dbfp</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">enable_load_extension</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">load_extension</span><span class="p">(</span><span class="s2">&quot;mod_spatialite&quot;</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT InitSpatialMetaData(1);&quot;</span><span class="p">)</span>
+    <span class="c1"># Add geometry column with specified CRS with defined geometry typehaving two dimensions</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="s2">&quot;SELECT AddGeometryColumn({table}, &#39;wkb_geometry&#39;,</span><span class="se">\</span>
+<span class="s2">        {srid}, {geom_type}, 2);&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">tbl_name</span><span class="p">,</span> <span class="n">srid</span><span class="o">=</span><span class="n">srid</span><span class="p">,</span> <span class="n">geom_type</span><span class="o">=</span><span class="n">geom_type</span><span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="c1"># Convert Shapely geometries into well-known-binary format</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">geom</span><span class="p">:</span> <span class="n">swkb</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">geom</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[40]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TZID</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Europe/Helsinki</td>
+      <td>POLYGON ((20.66716575622559 63.24361038208009,...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Europe/Helsinki</td>
+      <td>POLYGON ((26.5991382598877 60.36155700683594, ...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Europe/Helsinki</td>
+      <td>POLYGON ((26.53350067138672 60.36066818237305,...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Europe/Helsinki</td>
+      <td>POLYGON ((21.44886016845703 61.61077880859375,...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Europe/Helsinki</td>
+      <td>POLYGON ((21.58166694641113 61.62277603149414,...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 </div>
 <div class="section" id="Read-Web-Feature-Service-(WFS)">

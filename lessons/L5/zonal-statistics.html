@@ -307,272 +307,8 @@
 <li>Retrieve ‘Kallio’ and ‘Pihlajamäki’ regions from OpenStreetMap</li>
 </ul>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">kallio</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">gdf_from_place</span><span class="p">(</span><span class="n">kallio_q</span><span class="p">)</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">timeout</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/connection.py</span> in <span class="ni">_new_conn</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">170</span>             <span class="n">conn</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span>
-<span class="ne">--&gt; </span><span class="mi">171</span>                 <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dns_host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span> <span class="o">**</span><span class="n">extra_kw</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">172</span> 
-
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/util/connection.py</span> in <span class="ni">create_connection</span><span class="nt">(address, timeout, source_address, socket_options)</span>
-<span class="g g-Whitespace">     </span><span class="mi">78</span>     <span class="k">if</span> <span class="n">err</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">79</span>         <span class="k">raise</span> <span class="n">err</span>
-<span class="g g-Whitespace">     </span><span class="mi">80</span> 
-
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/util/connection.py</span> in <span class="ni">create_connection</span><span class="nt">(address, timeout, source_address, socket_options)</span>
-<span class="g g-Whitespace">     </span><span class="mi">68</span>                 <span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">source_address</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">69</span>             <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">sa</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span>             <span class="k">return</span> <span class="n">sock</span>
-
-<span class="ne">timeout</span>: timed out
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">ConnectTimeoutError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/connectionpool.py</span> in <span class="ni">urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">599</span>                                                   <span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-<span class="ne">--&gt; </span><span class="mi">600</span>                                                   <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">601</span> 
-
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">342</span>         <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">343</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_validate_conn</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="k">except</span> <span class="p">(</span><span class="n">SocketTimeout</span><span class="p">,</span> <span class="n">BaseSSLError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/connectionpool.py</span> in <span class="ni">_validate_conn</span><span class="nt">(self, conn)</span>
-<span class="g g-Whitespace">    </span><span class="mi">848</span>         <span class="k">if</span> <span class="ow">not</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="s1">&#39;sock&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">):</span>  <span class="c1"># AppEngine might not have  `.sock`</span>
-<span class="ne">--&gt; </span><span class="mi">849</span>             <span class="n">conn</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">850</span> 
-
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/connection.py</span> in <span class="ni">connect</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="c1"># Add certificate verification</span>
-<span class="ne">--&gt; </span><span class="mi">314</span>         <span class="n">conn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_conn</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">315</span> 
-
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/connection.py</span> in <span class="ni">_new_conn</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">175</span>                 <span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Connection to </span><span class="si">%s</span><span class="s2"> timed out. (connect timeout=</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span>
-<span class="ne">--&gt; </span><span class="mi">176</span>                 <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">177</span> 
-
-<span class="ne">ConnectTimeoutError</span>: (&lt;urllib3.connection.VerifiedHTTPSConnection object at 0x7efd9b7a5780&gt;, &#39;Connection to nominatim.openstreetmap.org timed out. (connect timeout=30)&#39;)
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">MaxRetryError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/requests/adapters.py</span> in <span class="ni">send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
-<span class="g g-Whitespace">    </span><span class="mi">444</span>                     <span class="n">retries</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span><span class="p">,</span>
-<span class="ne">--&gt; </span><span class="mi">445</span>                     <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span>
-<span class="g g-Whitespace">    </span><span class="mi">446</span>                 <span class="p">)</span>
-
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/connectionpool.py</span> in <span class="ni">urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">637</span>             <span class="n">retries</span> <span class="o">=</span> <span class="n">retries</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">_pool</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
-<span class="ne">--&gt; </span><span class="mi">638</span>                                         <span class="n">_stacktrace</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">2</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">639</span>             <span class="n">retries</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
-
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/util/retry.py</span> in <span class="ni">increment</span><span class="nt">(self, method, url, response, error, _pool, _stacktrace)</span>
-<span class="g g-Whitespace">    </span><span class="mi">397</span>         <span class="k">if</span> <span class="n">new_retry</span><span class="o">.</span><span class="n">is_exhausted</span><span class="p">():</span>
-<span class="ne">--&gt; </span><span class="mi">398</span>             <span class="k">raise</span> <span class="n">MaxRetryError</span><span class="p">(</span><span class="n">_pool</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">error</span> <span class="ow">or</span> <span class="n">ResponseError</span><span class="p">(</span><span class="n">cause</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">399</span> 
-
-<span class="ne">MaxRetryError</span>: HTTPSConnectionPool(host=&#39;nominatim.openstreetmap.org&#39;, port=443): Max retries exceeded with url: /search?format=json&amp;limit=1&amp;dedupe=0&amp;polygon_geojson=1&amp;q=Kallio%2C+Helsinki%2C+Finland (Caused by ConnectTimeoutError(&lt;urllib3.connection.VerifiedHTTPSConnection object at 0x7efd9b7a5780&gt;, &#39;Connection to nominatim.openstreetmap.org timed out. (connect timeout=30)&#39;))
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">ConnectTimeout</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-10-f94d43bd0b96&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">kallio</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">gdf_from_place</span><span class="p">(</span><span class="n">kallio_q</span><span class="p">)</span>
-
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/osmnx/core.py</span> in <span class="ni">gdf_from_place</span><span class="nt">(query, gdf_name, which_result, buffer_dist)</span>
-<span class="g g-Whitespace">    </span><span class="mi">436</span> 
-<span class="g g-Whitespace">    </span><span class="mi">437</span>     <span class="c1"># get the data from OSM</span>
-<span class="ne">--&gt; </span><span class="mi">438</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">osm_polygon_download</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">which_result</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">439</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">which_result</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">440</span> 
-
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/osmnx/core.py</span> in <span class="ni">osm_polygon_download</span><span class="nt">(query, limit, polygon_geojson)</span>
-<span class="g g-Whitespace">    </span><span class="mi">404</span> 
-<span class="g g-Whitespace">    </span><span class="mi">405</span>     <span class="c1"># request the URL, return the JSON</span>
-<span class="ne">--&gt; </span><span class="mi">406</span>     <span class="n">response_json</span> <span class="o">=</span> <span class="n">nominatim_request</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">407</span>     <span class="k">return</span> <span class="n">response_json</span>
-<span class="g g-Whitespace">    </span><span class="mi">408</span> 
-
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/osmnx/core.py</span> in <span class="ni">nominatim_request</span><span class="nt">(params, pause_duration, timeout, error_pause_duration)</span>
-<span class="g g-Whitespace">    </span><span class="mi">260</span>         <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">261</span>         <span class="n">log</span><span class="p">(</span><span class="s1">&#39;Requesting {} with timeout={}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">prepared_url</span><span class="p">,</span> <span class="n">timeout</span><span class="p">))</span>
-<span class="ne">--&gt; </span><span class="mi">262</span>         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">get_http_headers</span><span class="p">())</span>
-<span class="g g-Whitespace">    </span><span class="mi">263</span> 
-<span class="g g-Whitespace">    </span><span class="mi">264</span>         <span class="c1"># get the response size and the domain, log result</span>
-
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/requests/api.py</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span> 
-<span class="g g-Whitespace">     </span><span class="mi">71</span>     <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;allow_redirects&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">72</span>     <span class="k">return</span> <span class="n">request</span><span class="p">(</span><span class="s1">&#39;get&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span> 
-<span class="g g-Whitespace">     </span><span class="mi">74</span> 
-
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/requests/api.py</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="c1"># cases, and look like a memory leak in others.</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="k">with</span> <span class="n">sessions</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">58</span>         <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span> 
-<span class="g g-Whitespace">     </span><span class="mi">60</span> 
-
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/requests/sessions.py</span> in <span class="ni">request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
-<span class="g g-Whitespace">    </span><span class="mi">510</span>         <span class="p">}</span>
-<span class="g g-Whitespace">    </span><span class="mi">511</span>         <span class="n">send_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">512</span>         <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prep</span><span class="p">,</span> <span class="o">**</span><span class="n">send_kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">513</span> 
-<span class="g g-Whitespace">    </span><span class="mi">514</span>         <span class="k">return</span> <span class="n">resp</span>
-
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">620</span> 
-<span class="g g-Whitespace">    </span><span class="mi">621</span>         <span class="c1"># Send the request</span>
-<span class="ne">--&gt; </span><span class="mi">622</span>         <span class="n">r</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">623</span> 
-<span class="g g-Whitespace">    </span><span class="mi">624</span>         <span class="c1"># Total elapsed time of the request (approximately)</span>
-
-<span class="nn">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/requests/adapters.py</span> in <span class="ni">send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
-<span class="g g-Whitespace">    </span><span class="mi">499</span>                 <span class="c1"># TODO: Remove this in 3.0.0: see #2811</span>
-<span class="g g-Whitespace">    </span><span class="mi">500</span>                 <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="p">,</span> <span class="n">NewConnectionError</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">501</span>                     <span class="k">raise</span> <span class="n">ConnectTimeout</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">502</span> 
-<span class="g g-Whitespace">    </span><span class="mi">503</span>             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="p">,</span> <span class="n">ResponseError</span><span class="p">):</span>
-
-<span class="ne">ConnectTimeout</span>: HTTPSConnectionPool(host=&#39;nominatim.openstreetmap.org&#39;, port=443): Max retries exceeded with url: /search?format=json&amp;limit=1&amp;dedupe=0&amp;polygon_geojson=1&amp;q=Kallio%2C+Helsinki%2C+Finland (Caused by ConnectTimeoutError(&lt;urllib3.connection.VerifiedHTTPSConnection object at 0x7efd9b7a5780&gt;, &#39;Connection to nominatim.openstreetmap.org timed out. (connect timeout=30)&#39;))
 
 <span class="gp">In [11]: </span><span class="n">pihlajamaki</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">gdf_from_place</span><span class="p">(</span><span class="n">pihlajamaki_q</span><span class="p">)</span>
-<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ---------------------------------------------------------------------------</span>
-<span class="go">timeout                                   Traceback (most recent call last)</span>
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/connection.py in _new_conn(self)</span>
-<span class="go">    170             conn = connection.create_connection(</span>
-<span class="go">--&gt; 171                 (self._dns_host, self.port), self.timeout, **extra_kw)</span>
-<span class="go">    172 </span>
-
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/util/connection.py in create_connection(address, timeout, source_address, socket_options)</span>
-<span class="go">     78     if err is not None:</span>
-<span class="go">---&gt; 79         raise err</span>
-<span class="go">     80 </span>
-
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/util/connection.py in create_connection(address, timeout, source_address, socket_options)</span>
-<span class="go">     68                 sock.bind(source_address)</span>
-<span class="go">---&gt; 69             sock.connect(sa)</span>
-<span class="go">     70             return sock</span>
-
-<span class="go">timeout: timed out</span>
-
-<span class="go">During handling of the above exception, another exception occurred:</span>
-
-<span class="go">ConnectTimeoutError                       Traceback (most recent call last)</span>
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/connectionpool.py in urlopen(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
-<span class="go">    599                                                   body=body, headers=headers,</span>
-<span class="go">--&gt; 600                                                   chunked=chunked)</span>
-<span class="go">    601 </span>
-
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/connectionpool.py in _make_request(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
-<span class="go">    342         try:</span>
-<span class="go">--&gt; 343             self._validate_conn(conn)</span>
-<span class="go">    344         except (SocketTimeout, BaseSSLError) as e:</span>
-
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/connectionpool.py in _validate_conn(self, conn)</span>
-<span class="go">    848         if not getattr(conn, &#39;sock&#39;, None):  # AppEngine might not have  `.sock`</span>
-<span class="go">--&gt; 849             conn.connect()</span>
-<span class="go">    850 </span>
-
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/connection.py in connect(self)</span>
-<span class="go">    313         # Add certificate verification</span>
-<span class="go">--&gt; 314         conn = self._new_conn()</span>
-<span class="go">    315 </span>
-
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/connection.py in _new_conn(self)</span>
-<span class="go">    175                 self, &quot;Connection to %s timed out. (connect timeout=%s)&quot; %</span>
-<span class="go">--&gt; 176                 (self.host, self.timeout))</span>
-<span class="go">    177 </span>
-
-<span class="go">ConnectTimeoutError: (&lt;urllib3.connection.VerifiedHTTPSConnection object at 0x7efd9b7a5a20&gt;, &#39;Connection to nominatim.openstreetmap.org timed out. (connect timeout=30)&#39;)</span>
-
-<span class="go">During handling of the above exception, another exception occurred:</span>
-
-<span class="go">MaxRetryError                             Traceback (most recent call last)</span>
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/requests/adapters.py in send(self, request, stream, timeout, verify, cert, proxies)</span>
-<span class="go">    444                     retries=self.max_retries,</span>
-<span class="go">--&gt; 445                     timeout=timeout</span>
-<span class="go">    446                 )</span>
-
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/connectionpool.py in urlopen(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
-<span class="go">    637             retries = retries.increment(method, url, error=e, _pool=self,</span>
-<span class="go">--&gt; 638                                         _stacktrace=sys.exc_info()[2])</span>
-<span class="go">    639             retries.sleep()</span>
-
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/urllib3/util/retry.py in increment(self, method, url, response, error, _pool, _stacktrace)</span>
-<span class="go">    397         if new_retry.is_exhausted():</span>
-<span class="go">--&gt; 398             raise MaxRetryError(_pool, url, error or ResponseError(cause))</span>
-<span class="go">    399 </span>
-
-<span class="go">MaxRetryError: HTTPSConnectionPool(host=&#39;nominatim.openstreetmap.org&#39;, port=443): Max retries exceeded with url: /search?format=json&amp;limit=1&amp;dedupe=0&amp;polygon_geojson=1&amp;q=Pihlajam%C3%A4ki%2C+Malmi%2C+Helsinki%2C+Finland (Caused by ConnectTimeoutError(&lt;urllib3.connection.VerifiedHTTPSConnection object at 0x7efd9b7a5a20&gt;, &#39;Connection to nominatim.openstreetmap.org timed out. (connect timeout=30)&#39;))</span>
-
-<span class="go">During handling of the above exception, another exception occurred:</span>
-
-<span class="go">ConnectTimeout                            Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-11-b824c4dfb489&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 pihlajamaki = ox.gdf_from_place(pihlajamaki_q)</span>
-
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/osmnx/core.py in gdf_from_place(query, gdf_name, which_result, buffer_dist)</span>
-<span class="go">    436 </span>
-<span class="go">    437     # get the data from OSM</span>
-<span class="go">--&gt; 438     data = osm_polygon_download(query, limit=which_result)</span>
-<span class="go">    439     if len(data) &gt;= which_result:</span>
-<span class="go">    440 </span>
-
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/osmnx/core.py in osm_polygon_download(query, limit, polygon_geojson)</span>
-<span class="go">    404 </span>
-<span class="go">    405     # request the URL, return the JSON</span>
-<span class="go">--&gt; 406     response_json = nominatim_request(params=params, timeout=30)</span>
-<span class="go">    407     return response_json</span>
-<span class="go">    408 </span>
-
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/osmnx/core.py in nominatim_request(params, pause_duration, timeout, error_pause_duration)</span>
-<span class="go">    260         start_time = time.time()</span>
-<span class="go">    261         log(&#39;Requesting {} with timeout={}&#39;.format(prepared_url, timeout))</span>
-<span class="go">--&gt; 262         response = requests.get(url, params=params, timeout=timeout, headers=get_http_headers())</span>
-<span class="go">    263 </span>
-<span class="go">    264         # get the response size and the domain, log result</span>
-
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/requests/api.py in get(url, params, **kwargs)</span>
-<span class="go">     70 </span>
-<span class="go">     71     kwargs.setdefault(&#39;allow_redirects&#39;, True)</span>
-<span class="go">---&gt; 72     return request(&#39;get&#39;, url, params=params, **kwargs)</span>
-<span class="go">     73 </span>
-<span class="go">     74 </span>
-
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/requests/api.py in request(method, url, **kwargs)</span>
-<span class="go">     56     # cases, and look like a memory leak in others.</span>
-<span class="go">     57     with sessions.Session() as session:</span>
-<span class="go">---&gt; 58         return session.request(method=method, url=url, **kwargs)</span>
-<span class="go">     59 </span>
-<span class="go">     60 </span>
-
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/requests/sessions.py in request(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
-<span class="go">    510         }</span>
-<span class="go">    511         send_kwargs.update(settings)</span>
-<span class="go">--&gt; 512         resp = self.send(prep, **send_kwargs)</span>
-<span class="go">    513 </span>
-<span class="go">    514         return resp</span>
-
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/requests/sessions.py in send(self, request, **kwargs)</span>
-<span class="go">    620 </span>
-<span class="go">    621         # Send the request</span>
-<span class="go">--&gt; 622         r = adapter.send(request, **kwargs)</span>
-<span class="go">    623 </span>
-<span class="go">    624         # Total elapsed time of the request (approximately)</span>
-
-<span class="go">~/miniconda/envs/autogis-environment/lib/python3.5/site-packages/requests/adapters.py in send(self, request, stream, timeout, verify, cert, proxies)</span>
-<span class="go">    499                 # TODO: Remove this in 3.0.0: see #2811</span>
-<span class="go">    500                 if not isinstance(e.reason, NewConnectionError):</span>
-<span class="go">--&gt; 501                     raise ConnectTimeout(e, request=request)</span>
-<span class="go">    502 </span>
-<span class="go">    503             if isinstance(e.reason, ResponseError):</span>
-
-<span class="go">ConnectTimeout: HTTPSConnectionPool(host=&#39;nominatim.openstreetmap.org&#39;, port=443): Max retries exceeded with url: /search?format=json&amp;limit=1&amp;dedupe=0&amp;polygon_geojson=1&amp;q=Pihlajam%C3%A4ki%2C+Malmi%2C+Helsinki%2C+Finland (Caused by ConnectTimeoutError(&lt;urllib3.connection.VerifiedHTTPSConnection object at 0x7efd9b7a5a20&gt;, &#39;Connection to nominatim.openstreetmap.org timed out. (connect timeout=30)&#39;))</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -584,15 +320,15 @@
 <span class="nn">&lt;ipython-input-12-584f28a7c29c&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">kallio</span> <span class="o">=</span> <span class="n">kallio</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">dem</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;kallio&#39; is not defined
+<span class="ne">NameError</span>: name &#39;dem&#39; is not defined
 
 <span class="gp">In [13]: </span><span class="n">pihlajamaki</span> <span class="o">=</span> <span class="n">pihlajamaki</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">dem</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="go">                                                                                                                                                                                                                                                                                                ---------------------------------------------------------------------------</span>
+<span class="go">                                                                                                                                                                                                                                                                                             ---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
 <span class="go">&lt;ipython-input-13-e816ce8415cb&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 pihlajamaki = pihlajamaki.to_crs(crs=dem.crs.data)</span>
 
-<span class="go">NameError: name &#39;pihlajamaki&#39; is not defined</span>
+<span class="go">NameError: name &#39;dem&#39; is not defined</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -612,15 +348,15 @@
 <span class="go">&lt;ipython-input-15-6d653c3351f4&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 kallio.plot(ax=ax, facecolor=&#39;None&#39;, edgecolor=&#39;red&#39;, linewidth=2)</span>
 
-<span class="go">NameError: name &#39;kallio&#39; is not defined</span>
+<span class="go">NameError: name &#39;ax&#39; is not defined</span>
 
 <span class="gp">In [16]: </span><span class="n">pihlajamaki</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ---------------------------------------------------------------------------</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
 <span class="go">&lt;ipython-input-16-5f5472ca3885&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 pihlajamaki.plot(ax=ax, facecolor=&#39;None&#39;, edgecolor=&#39;blue&#39;, linewidth=2)</span>
 
-<span class="go">NameError: name &#39;pihlajamaki&#39; is not defined</span>
+<span class="go">NameError: name &#39;ax&#39; is not defined</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../../_images/zonal_stat_areas.png"><img alt="../../_images/zonal_stat_areas.png" src="../../_images/zonal_stat_areas.png" style="width: 450px;" /></a>
@@ -654,15 +390,15 @@
 <span class="nn">&lt;ipython-input-19-4046cca6e209&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">zs_kallio</span> <span class="o">=</span> <span class="n">zonal_stats</span><span class="p">(</span><span class="n">kallio</span><span class="p">,</span> <span class="n">array</span><span class="p">,</span> <span class="n">affine</span><span class="o">=</span><span class="n">affine</span><span class="p">,</span> <span class="n">stats</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="s1">&#39;majority&#39;</span><span class="p">])</span>
 
-<span class="ne">NameError</span>: name &#39;kallio&#39; is not defined
+<span class="ne">NameError</span>: name &#39;array&#39; is not defined
 
 <span class="gp">In [20]: </span><span class="n">zs_pihla</span> <span class="o">=</span> <span class="n">zonal_stats</span><span class="p">(</span><span class="n">pihlajamaki</span><span class="p">,</span> <span class="n">array</span><span class="p">,</span> <span class="n">affine</span><span class="o">=</span><span class="n">affine</span><span class="p">,</span> <span class="n">stats</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="s1">&#39;majority&#39;</span><span class="p">])</span>
-<span class="go">                                                                                                                                                                                                                                                                                                                                                                 ---------------------------------------------------------------------------</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                ---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
 <span class="go">&lt;ipython-input-20-a91a334c1489&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 zs_pihla = zonal_stats(pihlajamaki, array, affine=affine, stats=[&#39;min&#39;, &#39;max&#39;, &#39;mean&#39;, &#39;median&#39;, &#39;majority&#39;])</span>
 
-<span class="go">NameError: name &#39;pihlajamaki&#39; is not defined</span>
+<span class="go">NameError: name &#39;array&#39; is not defined</span>
 </pre></div>
 </div>
 <p>Okey. So what do we have now?</p>
