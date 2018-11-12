@@ -110,6 +110,7 @@ Contents
    lessons/L2/overview
    notebooks/L2/geopandas-basics.ipynb
    notebooks/L2/projections.ipynb
+   notebooks/L2/data_io.ipynb
    lessons/L2/using-functions
    lessons/L2/ex-2
 
