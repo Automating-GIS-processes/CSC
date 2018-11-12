@@ -120,7 +120,7 @@ Contents
 
    lessons/L3/overview
    notebooks/L3/Geocoding_in_Geopandas.ipynb
-   notebooks/L3/retrieve-osm-data.ipynb
+   notebooks/L3/retrieve_osm_data.ipynb
    notebooks/L3/reclassify.ipynb
    lessons/L3/ex-3
 
@@ -129,7 +129,7 @@ Contents
    :caption: Lesson 4
 
    lessons/L4/overview
-   notebooks/L4/point-in-polygon.ipynb
+   notebooks/L4/Point-in-polygon.ipynb
    notebooks/L4/spatial-join.ipynb
    notebooks/L4/nearest-neighbour.ipynb
    lessons/L4/ex-4
