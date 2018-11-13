@@ -125,10 +125,11 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/L3/overview.html">Overview</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Geocoding in Geopandas</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Table-join">Table join</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Notes-about-Nominatim">Notes about Nominatim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Download-data">Download data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Table-join">Table join</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#Notes-about-Nominatim">Notes about Nominatim</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="retrieve_osm_data.html">Retrieving OpenStreetMap data</a></li>
@@ -417,12 +418,15 @@ This page was generated from <a class="reference external" href="https://github.
 <p>It is possible to do geocoding in Geopandas using its integrated
 functionalities of geopy. Geopandas has a function called <code class="docutils literal notranslate"><span class="pre">geocode()</span></code>
 that can geocode a list of addresses (strings) and return a GeoDataFrame
-containing the resulting point objects in <code class="docutils literal notranslate"><span class="pre">geometry</span></code> column.</p>
-<p>Nice, isn’t it! Let’s try this out.</p>
-<p>Download a text file called
-<code class="docutils literal notranslate"><span class="pre">addresses.txt</span> <span class="pre">&lt;../../_static/data/L3/addresses.txt&gt;</span></code>__ that
-contains few addresses around Helsinki Region.</p>
-<p>The first rows of the data looks like following:</p>
+containing the resulting point objects in <code class="docutils literal notranslate"><span class="pre">geometry</span></code> column. Nice,
+isn’t it! Let’s try this out.</p>
+<div class="section" id="Download-data">
+<h2>Download data<a class="headerlink" href="#Download-data" title="Permalink to this headline">¶</a></h2>
+<p>For the lesson three <strong>download data package from</strong>
+<a class="reference external" href="https://github.com/AutoGIS/data/raw/master/CSC/L3_data.zip">here</a>.</p>
+<p>The package contains a text file called <code class="docutils literal notranslate"><span class="pre">addresses.txt</span></code> which has a
+few addresses around Helsinki Region. The first rows of the data looks
+like following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">;</span><span class="n">addr</span>
 <span class="mi">1000</span><span class="p">;</span><span class="n">Itämerenkatu</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">00101</span> <span class="n">Helsinki</span><span class="p">,</span> <span class="n">Finland</span>
 <span class="mi">1001</span><span class="p">;</span><span class="n">Kampinkuja</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">00100</span> <span class="n">Helsinki</span><span class="p">,</span> <span class="n">Finland</span>
@@ -590,7 +594,7 @@ However, the <code class="docutils literal notranslate"><span class="pre">id</sp
 information from <code class="docutils literal notranslate"><span class="pre">data</span></code> into our new GeoDataFrame <code class="docutils literal notranslate"><span class="pre">geo</span></code>, thus making
 a <strong>Table Join</strong>.</p>
 <div class="section" id="Table-join">
-<h2>Table join<a class="headerlink" href="#Table-join" title="Permalink to this headline">¶</a></h2>
+<h3>Table join<a class="headerlink" href="#Table-join" title="Permalink to this headline">¶</a></h3>
 <p>Table joins are really common procedures when doing GIS analyses. As you
 might remember from our earlier lessons, combining data from different
 tables based on common <code class="docutils literal notranslate"><span class="pre">key</span></code> attribute can be done easily in
@@ -731,8 +735,10 @@ all original columns plus a new column for <code class="docutils literal notrans
 </div>
 <p>That’s it. Now we have successfully geocoded those addresses into Points
 and made a Shapefile out of them. Easy isn’t it!</p>
+</div>
+</div>
 <div class="section" id="Notes-about-Nominatim">
-<h3>Notes about Nominatim<a class="headerlink" href="#Notes-about-Nominatim" title="Permalink to this headline">¶</a></h3>
+<h2>Notes about Nominatim<a class="headerlink" href="#Notes-about-Nominatim" title="Permalink to this headline">¶</a></h2>
 <p>Nominatim works relatively nicely if you have well defined and
 well-known addresses such as the ones that we used in this tutorial.
 However, in some cases, you might not have such well-defined addresses,
@@ -744,7 +750,6 @@ you might want to use e.g. <a class="reference external" href="https://developer
 Geocoding
 API</a>
 in a similar manner as we used Nominatim here.</p>
-</div>
 </div>
 </div>
 
@@ -769,7 +774,7 @@ in a similar manner as we used Nominatim here.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2018, Henrikki Tenkanen
-      Last updated on Nov 12, 2018.
+      Last updated on Nov 13, 2018.
 
     </p>
   </div>
