@@ -420,7 +420,8 @@ This page was generated from <a class="reference external" href="https://github.
 <div class="section" id="Read-Cloud-Optimized-Geotiffs">
 <h1>Read Cloud Optimized Geotiffs<a class="headerlink" href="#Read-Cloud-Optimized-Geotiffs" title="Permalink to this headline">¶</a></h1>
 <p>The following materials are based on <a class="reference external" href="https://geohackweek.github.io/raster/04-workingwithrasters/">this
-tutorial</a>.</p>
+tutorial</a>.
+Read more from that tutorial until this one get’s better updated.</p>
 <ul class="simple">
 <li>Let’s read a Landsat TIF profile from AWS cloud storage:</li>
 </ul>
@@ -462,11 +463,13 @@ tutorial</a>.</p>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="c1"># The grid of raster values can be accessed as a numpy array and plotted</span>
+<span class="c1"># Open the COG</span>
 <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
     <span class="c1"># List of overviews from biggest to smallest</span>
     <span class="n">oviews</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">overviews</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">oview</span> <span class="o">=</span> <span class="n">oviews</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># let&#39;s look at the smallest thumbnail</span>
+
+    <span class="c1"># Retrieve the smallest thumbnail</span>
+    <span class="n">oview</span> <span class="o">=</span> <span class="n">oviews</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Decimation factor= {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">oview</span><span class="p">))</span>
     <span class="c1"># NOTE this is using a &#39;decimated read&#39; (http://rasterio.readthedocs.io/en/latest/topics/resampling.html)</span>
     <span class="n">thumbnail</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">out_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">height</span> <span class="o">//</span> <span class="n">oview</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">width</span> <span class="o">//</span> <span class="n">oview</span><span class="p">)))</span>
@@ -524,13 +527,21 @@ array type:  &lt;class &#39;numpy.ndarray&#39;&gt;
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+<span></span><span class="c1"># Open the file</span>
+<span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="c1"># Access the overviews</span>
     <span class="n">oviews</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">overviews</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">oview</span> <span class="o">=</span> <span class="n">oviews</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Decimation factor= {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">oview</span><span class="p">))</span>
+
+    <span class="c1"># Read the thumbnail</span>
     <span class="n">thumbnail</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">out_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">height</span> <span class="o">//</span> <span class="n">oview</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">width</span> <span class="o">//</span> <span class="n">oview</span><span class="p">)))</span>
 
+    <span class="c1"># Convert the values into float</span>
     <span class="n">thumbnail</span> <span class="o">=</span> <span class="n">thumbnail</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Convert 0 values to NaNs</span>
     <span class="n">thumbnail</span><span class="p">[</span><span class="n">thumbnail</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">thumbnail</span><span class="p">)</span>

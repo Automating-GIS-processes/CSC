@@ -6,7 +6,7 @@
    "source": [
     "# Read Cloud Optimized Geotiffs\n",
     "\n",
-    "The following materials are based on [this tutorial](https://geohackweek.github.io/raster/04-workingwithrasters/).\n",
+    "The following materials are based on [this tutorial](https://geohackweek.github.io/raster/04-workingwithrasters/). Read more from that tutorial until this one get's better updated.\n",
     "\n",
     "- Let's read a Landsat TIF profile from AWS cloud storage:"
    ]
@@ -88,11 +88,13 @@
    ],
    "source": [
     "%matplotlib inline\n",
-    "# The grid of raster values can be accessed as a numpy array and plotted\n",
+    "# Open the COG\n",
     "with rasterio.open(fp) as src:\n",
     "    # List of overviews from biggest to smallest\n",
     "    oviews = src.overviews(1) \n",
-    "    oview = oviews[-1] # let's look at the smallest thumbnail\n",
+    "    \n",
+    "    # Retrieve the smallest thumbnail\n",
+    "    oview = oviews[-1] \n",
     "    print('Decimation factor= {}'.format(oview))\n",
     "    # NOTE this is using a 'decimated read' (http://rasterio.readthedocs.io/en/latest/topics/resampling.html)\n",
     "    thumbnail = src.read(1, out_shape=(1, int(src.height // oview), int(src.width // oview)))\n",
@@ -148,13 +150,21 @@
     }
    ],
    "source": [
+    "# Open the file\n",
     "with rasterio.open(fp) as src:\n",
+    "    # Access the overviews\n",
     "    oviews = src.overviews(1)\n",
     "    oview = oviews[-1]\n",
+    "    \n",
     "    print('Decimation factor= {}'.format(oview))\n",
+    "    \n",
+    "    # Read the thumbnail\n",
     "    thumbnail = src.read(1, out_shape=(1, int(src.height // oview), int(src.width // oview)))\n",
-    "\n",
+    "    \n",
+    "    # Convert the values into float\n",
     "    thumbnail = thumbnail.astype('f4')\n",
+    "    \n",
+    "    # Convert 0 values to NaNs\n",
     "    thumbnail[thumbnail==0] = np.nan\n",
     "\n",
     "plt.imshow(thumbnail)\n",
