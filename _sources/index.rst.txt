@@ -145,15 +145,18 @@ Contents
    notebooks/L5/clipping-raster.ipynb
    notebooks/L5/raster-map-algebra.ipynb
    notebooks/L5/raster-mosaic.ipynb
-   lessons/L5/zonal-statistics
+   notebooks/L5/zonal-statistics.ipynb
+   notebooks/L5/read-cogs.ipynb
 
 .. toctree::
    :maxdepth: 2
    :caption: Lesson 6
 
    lessons/L6/overview
+   lessons/L6/download-data
    lessons/L6/static-maps
    lessons/L6/interactive-map-bokeh
+   lessons/L6/interactive-map-folium
    lessons/L6/advanced-bokeh
    lessons/L6/share-on-github
    lessons/L6/ex-6

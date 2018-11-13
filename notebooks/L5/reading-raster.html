@@ -142,16 +142,30 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/L5/overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/L5/download-data.html">Automatize data download</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Reading raster files with Rasterio</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Read-raster-file-properties">Read raster file properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Get-raster-bands">Get raster bands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Band-statistics">Band statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Download-data">Download data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Read-raster-file-properties">Read raster file properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Get-raster-bands">Get raster bands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Band-statistics">Band statistics</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="plotting-raster.html">Visualizing raster layers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="clipping-raster.html">Masking / clipping raster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="raster-map-algebra.html">Raster map algebra</a></li>
 <li class="toctree-l1"><a class="reference internal" href="raster-mosaic.html">Creating a raster mosaic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/L5/zonal-statistics.html">Zonal statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zonal-statistics.html">Zonal statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read-cogs.html">Read Cloud Optimized Geotiffs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Lesson 6</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/L6/overview.html">Lesson 5 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/L6/download-data.html">Download datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/L6/static-maps.html">Static maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/L6/interactive-map-bokeh.html">Interactive maps with Bokeh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/L6/interactive-map-folium.html">Interactive maps on Leaflet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/L6/share-on-github.html">Sharing interactive plots on GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/L6/ex-6.html">Exercise 6</a></li>
 </ul>
 
             
@@ -427,6 +441,12 @@ Imagine .img</a> -files.</p>
 bands are stored as separate GeoTIFF -files in the original package.
 Each band contains information of surface reflectance from different
 ranges of the electromagnetic spectrum.</p>
+<div class="section" id="Download-data">
+<h2>Download data<a class="headerlink" href="#Download-data" title="Permalink to this headline">¶</a></h2>
+<p><strong>Download the data</strong> package from
+<a class="reference external" href="http://www.helsinki.fi/science/accessibility/opetus/autogis/L5_data.zip">here</a>.
+The package contains various TIF-files that will be explored during the
+tutorials.</p>
 <p>Let’s start with inspecting one of the files we downloaded:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
@@ -440,7 +460,7 @@ ranges of the electromagnetic spectrum.</p>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="c1"># Data dir</span>
-<span class="n">data_dir</span> <span class="o">=</span> <span class="s2">&quot;data&quot;</span>
+<span class="n">data_dir</span> <span class="o">=</span> <span class="s2">&quot;L5_data&quot;</span>
 <span class="n">fp</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">&quot;Helsinki_masked_p188r018_7t20020529_z34__LV-FIN.tif&quot;</span><span class="p">)</span>
 
 <span class="c1"># Open the file:</span>
@@ -465,7 +485,7 @@ ranges of the electromagnetic spectrum.</p>
 <code class="docutils literal notranslate"><span class="pre">rasterio._io.RasterReader</span></code> type which means that we have opened the
 file for reading.</p>
 <div class="section" id="Read-raster-file-properties">
-<h2>Read raster file properties<a class="headerlink" href="#Read-raster-file-properties" title="Permalink to this headline">¶</a></h2>
+<h3>Read raster file properties<a class="headerlink" href="#Read-raster-file-properties" title="Permalink to this headline">¶</a></h3>
 <p>Let’s have a closer look at the properties of the file:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
@@ -650,7 +670,7 @@ file for reading.</p>
 </div>
 </div>
 <div class="section" id="Get-raster-bands">
-<h2>Get raster bands<a class="headerlink" href="#Get-raster-bands" title="Permalink to this headline">¶</a></h2>
+<h3>Get raster bands<a class="headerlink" href="#Get-raster-bands" title="Permalink to this headline">¶</a></h3>
 <p>Different bands of a satellite images are often stacked together in one
 raster dataset. In our case, all seven bands of the Landsat 8 scene are
 included in our GeoTIFF and the <code class="docutils literal notranslate"><span class="pre">count</span></code> is hence 7.</p>
@@ -693,7 +713,7 @@ can store also negative values. For example, an unsigned 16-bit integer
 can store 2^16 (=65,536) values ranging from 0 to 65,535.</p>
 </div>
 <div class="section" id="Band-statistics">
-<h2>Band statistics<a class="headerlink" href="#Band-statistics" title="Permalink to this headline">¶</a></h2>
+<h3>Band statistics<a class="headerlink" href="#Band-statistics" title="Permalink to this headline">¶</a></h3>
 <p>Next, let’s have a look at the values that are stored in the band. As
 the values of the bands are stored as numpy arrays, it is extremely easy
 to calculate basic statistics by using basic numpy functions.</p>
@@ -734,6 +754,7 @@ to calculate basic statistics by using basic numpy functions.</p>
  {&#39;min&#39;: 0, &#39;mean&#39;: 105.8221477777442, &#39;median&#39;: 114.0, &#39;max&#39;: 175},
  {&#39;min&#39;: 0, &#39;mean&#39;: 26.28348760569581, &#39;median&#39;: 14.0, &#39;max&#39;: 255}]
 </pre></div>
+</div>
 </div>
 </div>
 </div>
