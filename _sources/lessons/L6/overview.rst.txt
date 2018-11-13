@@ -1,7 +1,7 @@
-Lesson 5 Overview
+Lesson 6 Overview
 =================
 
-This week we will focus on learning how to create beautiful maps in Python and how to share them on GitHub using `GitHub Pages <https://pages.github.com/>`_.
+In this tutorial we will focus on learning how to create beautiful maps in Python and how to share them on GitHub using `GitHub Pages <https://pages.github.com/>`_.
 
 1. :doc:`Static maps <static-maps>`
 2. :doc:`Interactive maps with bokeh <interactive-map-bokeh>`
